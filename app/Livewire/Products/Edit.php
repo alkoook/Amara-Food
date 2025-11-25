@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Laravel\Facades\Image;
 
 class Edit extends Component
 {
@@ -45,17 +45,19 @@ class Edit extends Component
     public function mount($id)
     {
         $this->product = Product::findOrFail($id);
-        $this->name = $this->product->name;
+
+        $this->name        = $this->product->name;
         $this->description = $this->product->description;
-        $this->oldImage = $this->product->image;
-        $this->weight = $this->product->weight;
-        $this->quantity = $this->product->quantity;
+        $this->oldImage    = $this->product->image;
+        $this->weight      = $this->product->weight;
+        $this->quantity    = $this->product->quantity;
         $this->expiry_date = $this->product->expiry_date?->format('Y-m-d');
-        $this->added_date = $this->product->added_date->format('Y-m-d');
+        $this->added_date  = $this->product->added_date->format('Y-m-d');
         $this->category_id = $this->product->category_id;
-        $this->brand_id = $this->product->brand_id;
-        $this->categories = Category::all();
-        $this->brands = Brand::all();
+        $this->brand_id    = $this->product->brand_id;
+
+        $this->categories  = Category::all();
+        $this->brands      = Brand::all();
     }
 
     public function update()
@@ -63,34 +65,40 @@ class Edit extends Component
         $this->validate();
 
         $imagePath = $this->oldImage;
-        
+
+        // إذا رفع صورة جديدة
         if ($this->image) {
-            // Delete old image
+
+            // حذف الصورة القديمة
             if ($this->oldImage) {
                 \Storage::disk('public')->delete($this->oldImage);
             }
-            
+
+            // تخزين الصورة الجديدة
             $imagePath = $this->image->store('products', 'public');
-            
-            // Compress image
-            $img = Image::make(storage_path('app/public/' . $imagePath));
+
+            // ضغط الصورة (Intervention v3)
+            $img = Image::read(storage_path('app/public/' . $imagePath));
+
             $img->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
+
             $img->save(storage_path('app/public/' . $imagePath), 80);
         }
 
+        // تحديث البيانات
         $this->product->update([
-            'name' => $this->name,
+            'name'        => $this->name,
             'description' => $this->description,
-            'image' => $imagePath,
-            'weight' => $this->weight ?: null,
-            'quantity' => $this->quantity ?: null,
+            'image'       => $imagePath,
+            'weight'      => $this->weight ?: null,
+            'quantity'    => $this->quantity ?: null,
             'expiry_date' => $this->expiry_date ?: null,
-            'added_date' => $this->added_date,
+            'added_date'  => $this->added_date,
             'category_id' => $this->category_id,
-            'brand_id' => $this->brand_id,
+            'brand_id'    => $this->brand_id,
         ]);
 
         session()->flash('message', 'تم تحديث المنتج بنجاح');
@@ -102,4 +110,3 @@ class Edit extends Component
         return view('livewire.products.edit');
     }
 }
-

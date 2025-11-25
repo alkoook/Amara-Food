@@ -1,4 +1,4 @@
-<div class="mb-6">
+<div><div class="mb-6">
         <a href="{{ route('admin.products.index') }}" class="text-blue-600 hover:text-blue-800">
             ← العودة إلى قائمة المنتجات
         </a>
@@ -104,4 +104,4 @@
             </div>
         </form>
     </div>
-
+</div>

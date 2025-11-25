@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-950 text-gray-100">
     <div class="min-h-screen flex">
         <!-- Sidebar -->
         <aside class="w-64 bg-gray-900 text-white min-h-screen">
@@ -16,6 +16,9 @@
                 <p class="text-gray-400 text-sm text-center mt-2">لوحة التحكم</p>
             </div>
             <nav class="mt-8">
+                <a href="{{ route('admin.dashboard') }}" class="block px-6 py-3 hover:bg-gray-800 {{ request()->routeIs('admin.dashboard') ? 'bg-gray-800 border-r-4 border-blue-500' : '' }}">
+                    الرئيسية
+                </a>
                 <a href="{{ route('admin.categories.index') }}" class="block px-6 py-3 hover:bg-gray-800 {{ request()->routeIs('admin.categories.*') ? 'bg-gray-800 border-r-4 border-blue-500' : '' }}">
                     الأصناف
                 </a>
@@ -32,16 +35,19 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1">
-            <header class="bg-white shadow-sm border-b">
-                <div class="px-6 py-4">
-                    <h2 class="text-xl font-semibold text-gray-800">{{ $title ?? 'لوحة التحكم' }}</h2>
+        <main class="flex-1 bg-gray-900">
+            <header class="bg-gray-900 border-b border-gray-800">
+                <div class="px-6 py-4 flex items-center justify-between">
+                    <h2 class="text-xl font-semibold text-gray-100">{{ $title ?? 'لوحة التحكم' }}</h2>
+                    <div class="text-sm text-gray-400">
+                        {{ auth()->user()->name ?? 'Admin' }}
+                    </div>
                 </div>
             </header>
             
             <div class="p-6">
                 @if (session()->has('message'))
-                    <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                    <div class="mb-4 bg-emerald-900/40 border border-emerald-500 text-emerald-200 px-4 py-3 rounded relative" role="alert">
                         <span class="block sm:inline">{{ session('message') }}</span>
                     </div>
                 @endif

@@ -5,7 +5,7 @@ namespace App\Livewire\Categories;
 use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Laravel\Facades\Image;
 
 class Create extends Component
 {

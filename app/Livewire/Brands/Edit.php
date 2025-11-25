@@ -5,7 +5,7 @@ namespace App\Livewire\Brands;
 use App\Models\Brand;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Laravel\Facades\Image;
 
 class Edit extends Component
 {

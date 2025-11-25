@@ -1,3 +1,4 @@
+<div>
 <div class="mb-6">
         <a href="{{ route('admin.products.index') }}" class="text-blue-600 hover:text-blue-800">
             ← العودة إلى قائمة المنتجات
@@ -79,3 +80,4 @@
         </div>
     </div>
 
+</div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 
 // Front Routes
@@ -15,8 +16,16 @@ Route::get('/about', function () {
 })->name('about');
 Route::get('/contact', \App\Livewire\Front\Contact::class)->name('contact');
 
-// Admin Routes
+// Admin Routes (لوحة تحكم مستقلة تماماً)
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+    // Dashboard
+    Route::get('/', function () {
+        return view('components.admin-layout');
+    })->name('dashboard');
+    
+
+    Route::post('/logout', Logout::class)->name('logout');
+
     // Categories
     Route::get('/categories', \App\Livewire\Categories\Index::class)->name('categories.index');
     Route::get('/categories/create', \App\Livewire\Categories\Create::class)->name('categories.create');
@@ -37,12 +46,6 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/settings', \App\Livewire\Settings\Index::class)->name('settings.index');
 });
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+// لم نعد نستخدم Dashboard و Profile العامة لليوزر
 
 require __DIR__.'/auth.php';
