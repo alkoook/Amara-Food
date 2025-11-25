@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </header>
-            
+
             <div class="p-6">
                 @if (session()->has('message'))
                     <div class="mb-4 bg-emerald-900/40 border border-emerald-500 text-emerald-200 px-4 py-3 rounded relative" role="alert">

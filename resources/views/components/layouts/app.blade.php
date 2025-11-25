@@ -13,7 +13,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="{{ route('home') }}" class="text-2xl font-bold text-blue-600">AmaraFood</a>
+                    <a href="{{ route('home') }}" class="text-2xl font-bold text-blue-600">Amara Food</a>
                 </div>
                 <nav class="hidden md:flex space-x-reverse space-x-8">
                     <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 {{ request()->routeIs('home') ? 'text-blue-600 font-semibold' : '' }}">الرئيسية</a>
@@ -22,7 +22,6 @@
                     <a href="{{ route('brands.index') }}" class="text-gray-700 hover:text-blue-600 {{ request()->routeIs('brands.*') ? 'text-blue-600 font-semibold' : '' }}">الشركات</a>
                     <a href="{{ route('about') }}" class="text-gray-700 hover:text-blue-600 {{ request()->routeIs('about') ? 'text-blue-600 font-semibold' : '' }}">من نحن</a>
                     <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600 {{ request()->routeIs('contact') ? 'text-blue-600 font-semibold' : '' }}">تواصل معنا</a>
-                    <a href="{{ route('admin.dashboard') }}" class="text-gray-700 hover:text-blue-600 {{ request()->routeIs('contact') ? 'text-blue-600 font-semibold' : '' }}">ADMIN</a>
                 </nav>
                 <button class="md:hidden text-gray-700" id="mobile-menu-button">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -39,7 +39,7 @@ class Index extends Component
         ->latest()
         ->paginate($this->perPage);
 
-        return view('livewire.categories.index', compact('categories'));
+        return view('livewire.categories.index', compact('categories'))->layout('components.layouts.admin', ['title' => 'الأصناف']);
+;
     }
 }
-

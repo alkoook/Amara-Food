@@ -22,13 +22,13 @@ new #[Layout('layouts.guest')] class extends Component
         Session::regenerate();
 
         // توجيه الآدمن
-        $this->redirectIntended(default: route('admin.categories.index', absolute: false), navigate: true);
+        $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
     }
 }; ?>
 
 <!-- استخدمنا flex justify-center لضمان تمركز المحتوى في صفحة الـ guest layout -->
 <div class="flex flex-col items-center justify-center min-h-[90vh] py-12 px-4 sm:px-6 lg:px-8 w-full" dir="rtl">
-    
+
     <!-- Logo Section - تصميم بسيط وأنيق -->
     <div class="flex flex-col items-center mb-10">
         <div class="bg-indigo-600 p-4 rounded-3xl shadow-2xl shadow-indigo-500/30 mb-5 transform hover:scale-[1.02] transition-transform duration-300 ring-2 ring-white/10">
@@ -44,7 +44,7 @@ new #[Layout('layouts.guest')] class extends Component
     <!-- Login Card - الـ div الغامق الرئيسي -->
     <div class="w-full max-w-[420px] bg-slate-800/90 border border-slate-700/50 shadow-[0_20px_50px_-5px_rgba(0,0,0,0.5)] rounded-2xl overflow-hidden backdrop-blur-md ring-1 ring-white/5">
         <div class="p-8 sm:p-10">
-            
+
             <!-- تم إزالة Session Status بالكامل بناءً على طلب إزالة "الديف الأبيض" -->
 
             <form wire:submit="login" class="space-y-6">
@@ -58,15 +58,15 @@ new #[Layout('layouts.guest')] class extends Component
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                             </svg>
                         </div>
-                        <input wire:model="form.email" id="email" type="email" name="email" required autofocus autocomplete="username" 
-                            class="block w-full pr-10 pl-3 py-3.5 bg-slate-900 border border-slate-600 rounded-xl text-white placeholder-slate-500 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-all duration-200 shadow-md hover:border-indigo-500/50" 
+                        <input wire:model="form.email" id="email" type="email" name="email" required autofocus autocomplete="username"
+                            class="block w-full pr-10 pl-3 py-3.5 bg-slate-900 border border-slate-600 rounded-xl text-white placeholder-slate-500 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-all duration-200 shadow-md hover:border-indigo-500/50"
                             placeholder="الرجاء إدخال البريد الإلكتروني">
                     </div>
-                    @error('form.email') 
+                    @error('form.email')
                         <p class="mt-2 text-sm text-red-300 flex items-center gap-1 font-medium">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             {{ $message }}
-                        </p> 
+                        </p>
                     @enderror
                 </div>
 
@@ -84,11 +84,11 @@ new #[Layout('layouts.guest')] class extends Component
                             class="block w-full pr-10 pl-3 py-3.5 bg-slate-900 border border-slate-600 rounded-xl text-white placeholder-slate-500 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-all duration-200 shadow-md hover:border-indigo-500/50"
                             placeholder="••••••••">
                     </div>
-                    @error('form.password') 
+                    @error('form.password')
                         <p class="mt-2 text-sm text-red-300 flex items-center gap-1 font-medium">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             {{ $message }}
-                        </p> 
+                        </p>
                     @enderror
                 </div>
 
@@ -121,7 +121,7 @@ new #[Layout('layouts.guest')] class extends Component
                 </button>
             </form>
         </div>
-        
+
         <!-- Footer area -->
         <div class="px-8 py-4 bg-slate-900 border-t border-slate-700/50 text-center">
             <p class="text-[10px] text-slate-500 font-normal">

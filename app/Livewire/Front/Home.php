@@ -12,7 +12,7 @@ class Home extends Component
 {
     use WithPagination;
 
-    protected $layout = 'components.layouts.app';
+    protected $layout = 'components.front-layout';
 
     public $search = '';
     public $categoryFilter = '';
@@ -65,7 +65,6 @@ class Home extends Component
         $categories = Category::all();
         $brands = Brand::all();
 
-        return view('livewire.front.home', compact('products', 'categories', 'brands'));
+        return view('livewire.front.home', compact('products', 'categories', 'brands'))->layout('components.front-layout');
     }
 }
-

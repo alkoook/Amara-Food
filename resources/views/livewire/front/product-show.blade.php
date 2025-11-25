@@ -12,9 +12,9 @@
                 <!-- Product Image -->
                 <div>
                     @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" 
-                             alt="{{ $product->name }}" 
-                             class="w-full rounded-lg shadow-md">
+                        <img src="{{ asset('storage/' . $product->image) }}"
+                             alt="{{ $product->name }}"
+                             class="w-full h-96 rounded-lg shadow-md">
                     @else
                         <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
                             <span class="text-gray-400">لا توجد صورة</span>
@@ -79,12 +79,12 @@
                     ->where('id', '!=', $product->id)
                     ->limit(4)
                     ->get() as $relatedProduct)
-                    <a href="{{ route('products.show', $relatedProduct->id) }}" 
+                    <a href="{{ route('products.show', $relatedProduct->id) }}"
                        class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group">
                         <div class="relative overflow-hidden">
                             @if($relatedProduct->image)
-                                <img src="{{ asset('storage/' . $relatedProduct->image) }}" 
-                                     alt="{{ $relatedProduct->name }}" 
+                                <img src="{{ asset('storage/' . $relatedProduct->image) }}"
+                                     alt="{{ $relatedProduct->name }}"
                                      class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
                             @else
                                 <div class="w-full h-40 bg-gray-200 flex items-center justify-center">

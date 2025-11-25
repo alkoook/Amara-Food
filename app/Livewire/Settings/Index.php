@@ -39,11 +39,11 @@ class Index extends Component
         Setting::setValue('phone', $this->phone);
 
         session()->flash('message', 'تم حفظ الإعدادات بنجاح');
+        return redirect()->route('admin.dashboard');
     }
 
     public function render()
     {
-        return view('livewire.settings.index');
+        return view('livewire.settings.index')->layout('components.layouts.admin', ['title' => 'الإعدادات']);
     }
 }
-

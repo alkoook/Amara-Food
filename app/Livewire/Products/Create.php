@@ -31,7 +31,7 @@ class Create extends Component
     protected $rules = [
         'name' => 'required|string|max:255',
         'description' => 'required|string',
-        'image' => 'required|image|max:2048',
+        'image' => 'required|image|max:20000',
         'weight' => 'nullable|numeric|min:0',
         'quantity' => 'nullable|integer|min:0',
         'expiry_date' => 'nullable|date',
@@ -57,10 +57,7 @@ class Create extends Component
         // Compress using Intervention Image v3
         $img = Image::read(storage_path('app/public/' . $imagePath));
 
-        $img->resize(800, null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        });
+        $img->scale(width: 800);
 
         $img->save(storage_path('app/public/' . $imagePath), 80);
 
@@ -82,6 +79,6 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.products.create');
+        return view('livewire.products.create')->layout('components.layouts.admin', ['title' => 'المنتجات']);
     }
 }

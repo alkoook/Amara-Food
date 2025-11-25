@@ -18,6 +18,6 @@ class ProductShow extends Component
 
     public function render()
     {
-        return view('livewire.front.product-show');
+        return view('livewire.front.product-show')->layout('components.front-layout');
     }
 }

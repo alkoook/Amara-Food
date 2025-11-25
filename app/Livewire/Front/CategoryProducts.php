@@ -60,7 +60,6 @@ class CategoryProducts extends Component
 
         $brands = $this->category->brands;
 
-        return view('livewire.front.category-products', compact('products', 'brands'));
+        return view('livewire.front.category-products', compact('products', 'brands'))->layout('components.front-layout');
     }
 }
-

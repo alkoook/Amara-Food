@@ -18,11 +18,9 @@ Route::get('/contact', \App\Livewire\Front\Contact::class)->name('contact');
 
 // Admin Routes (لوحة تحكم مستقلة تماماً)
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
-    // Dashboard
-    Route::get('/', function () {
-        return view('components.admin-layout');
-    })->name('dashboard');
-    
+
+Route::get('/', \App\Livewire\Admin\Dashboard\Index::class)->name('dashboard');
+
 
     Route::post('/logout', Logout::class)->name('logout');
 

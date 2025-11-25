@@ -7,6 +7,9 @@ use Livewire\Volt\Volt;
 Route::middleware('guest')->group(function () {
     // Admin login route only (تعطيل إنشاء حسابات جديدة)
     // تم حذف Route التسجيل حتى يكون الدخول للوحة التحكم عبر حساب آدمن جاهز فقط
+    // Volt::route('register', 'pages.auth.register')
+    //     ->name('register');
+
     Volt::route('login', 'pages.auth.login')
         ->name('login');
 

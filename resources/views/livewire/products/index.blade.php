@@ -1,7 +1,7 @@
 
 <div><div class="mb-6 flex justify-between items-center">
         <h3 class="text-2xl font-bold text-gray-800">المنتجات</h3>
-        <a href="{{ route('admin.products.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+        <a href="{{ route('admin.products.create') }}" class="bg-red-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
             إضافة منتج جديد
         </a>
     </div>

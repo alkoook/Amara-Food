@@ -8,7 +8,7 @@
     <div class="bg-white rounded-lg shadow-sm p-6 max-w-4xl">
         <div class="flex justify-between items-start mb-6">
             <h3 class="text-2xl font-bold text-gray-800">تفاصيل المنتج</h3>
-            <a href="{{ route('admin.products.edit', $product->id) }}" 
+            <a href="{{ route('admin.products.edit', $product->id) }}"
                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
                 تعديل
             </a>
@@ -17,8 +17,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
                 @if($product->image)
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" 
-                         class="w-full h-64 object-cover rounded-lg">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
+                         class="w-40 h-40 cover rounded-lg">
                 @else
                     <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
                         <span class="text-gray-400">لا توجد صورة</span>

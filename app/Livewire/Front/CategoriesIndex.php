@@ -29,7 +29,6 @@ class CategoriesIndex extends Component
         ->latest()
         ->paginate($this->perPage);
 
-        return view('livewire.front.categories-index', compact('categories'));
+        return view('livewire.front.categories-index', compact('categories'))->layout('components.front-layout');
     }
 }
-

@@ -37,13 +37,10 @@ class Create extends Component
         $imagePath = null;
         if ($this->image) {
             $imagePath = $this->image->store('categories', 'public');
-            
+
             // Compress image
-            $img = Image::make(storage_path('app/public/' . $imagePath));
-            $img->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $img = Image::read(storage_path('app/public/' . $imagePath));
+            $img->scale(width: 800);
             $img->save(storage_path('app/public/' . $imagePath), 80);
         }
 
@@ -63,7 +60,6 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.categories.create');
+        return view('livewire.categories.create')->layout('components.layouts.admin', ['title' => 'الأصناف']);
     }
 }
-

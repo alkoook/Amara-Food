@@ -22,7 +22,7 @@ class Create extends Component
     protected $rules = [
         'name' => 'required|string|max:255',
         'description' => 'nullable|string',
-        'logo' => 'nullable|image|max:2048',
+        'logo' => 'nullable|image|max:20000',
     ];
 
     public function mount()
@@ -39,11 +39,8 @@ class Create extends Component
             $logoPath = $this->logo->store('brands', 'public');
 
             // Compress image
-            $img = Image::make(storage_path('app/public/' . $logoPath));
-            $img->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $img = Image::read(storage_path('app/public/' . $logoPath));
+            $img->scale(width: 800);
             $img->save(storage_path('app/public/' . $logoPath), 80);
         }
 
@@ -63,6 +60,6 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.brands.create');
+        return view('livewire.brands.create')->layout('components.layouts.admin', ['title' => 'الشركات']);
     }
 }

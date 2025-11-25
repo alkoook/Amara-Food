@@ -29,7 +29,6 @@ class BrandsIndex extends Component
         ->latest()
         ->paginate($this->perPage);
 
-        return view('livewire.front.brands-index', compact('brands'));
+        return view('livewire.front.brands-index', compact('brands'))->layout('components.front-layout');
     }
 }
-

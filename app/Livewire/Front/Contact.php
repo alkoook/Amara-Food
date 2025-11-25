@@ -30,7 +30,7 @@ class Contact extends Component
         // Mail::to('support@amarafood.com')->send(new ContactMail($this->name, $this->email, $this->subject, $this->message));
 
         session()->flash('message', 'شكراً لك! تم إرسال رسالتك بنجاح وسنقوم بالرد عليك قريباً.');
-        
+
         $this->reset(['name', 'email', 'phone', 'subject', 'message']);
     }
 
@@ -43,7 +43,6 @@ class Contact extends Component
         $instagram = \App\Models\Setting::getValue('instagram', '');
         $whatsapp = \App\Models\Setting::getValue('whatsapp', '');
 
-        return view('livewire.front.contact', compact('email', 'phone', 'facebook', 'twitter', 'instagram', 'whatsapp'));
+        return view('livewire.front.contact', compact('email', 'phone', 'facebook', 'twitter', 'instagram', 'whatsapp'))->layout('components.front-layout');
     }
 }
-

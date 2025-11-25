@@ -42,21 +42,18 @@ class Edit extends Component
         $this->validate();
 
         $logoPath = $this->oldLogo;
-        
+
         if ($this->logo) {
             // Delete old logo
             if ($this->oldLogo) {
                 \Storage::disk('public')->delete($this->oldLogo);
             }
-            
+
             $logoPath = $this->logo->store('brands', 'public');
-            
+
             // Compress image
-            $img = Image::make(storage_path('app/public/' . $logoPath));
-            $img->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $img = Image::read(storage_path('app/public/' . $logoPath));
+            $img->scale(width: 800);
             $img->save(storage_path('app/public/' . $logoPath), 80);
         }
 
@@ -74,7 +71,6 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.brands.edit');
+        return view('livewire.brands.edit')->layout('components.layouts.admin', ['title' => 'الشركات']);
     }
 }
-

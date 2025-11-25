@@ -18,7 +18,6 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.products.show');
+        return view('livewire.products.show')->layout('components.layouts.admin', ['title' => 'المنتجات']);
     }
 }
-
