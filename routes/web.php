@@ -16,7 +16,7 @@ Route::get('/about', function () {
 Route::get('/contact', \App\Livewire\Front\Contact::class)->name('contact');
 
 // Admin Routes
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // Categories
     Route::get('/categories', \App\Livewire\Categories\Index::class)->name('categories.index');
     Route::get('/categories/create', \App\Livewire\Categories\Create::class)->name('categories.create');
@@ -36,3 +36,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Settings
     Route::get('/settings', \App\Livewire\Settings\Index::class)->name('settings.index');
 });
+
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+require __DIR__.'/auth.php';

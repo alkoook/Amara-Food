@@ -37,7 +37,7 @@ class Create extends Component
         $logoPath = null;
         if ($this->logo) {
             $logoPath = $this->logo->store('brands', 'public');
-            
+
             // Compress image
             $img = Image::make(storage_path('app/public/' . $logoPath));
             $img->resize(800, null, function ($constraint) {
@@ -66,4 +66,3 @@ class Create extends Component
         return view('livewire.brands.create');
     }
 }
-
