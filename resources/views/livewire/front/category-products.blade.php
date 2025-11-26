@@ -18,11 +18,11 @@
         <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                    <input type="text" wire:model.live="search" placeholder="بحث عن منتج..." 
+                    <input type="text" wire:model.live="search" placeholder="بحث عن منتج..."
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
                 <div>
-                    <select wire:model.live="brandFilter" 
+                    <select wire:model.live="brandFilter"
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <option value="">جميع الشركات</option>
                         @foreach($brands as $brand)
@@ -31,7 +31,7 @@
                     </select>
                 </div>
                 <div>
-                    <select wire:model.live="sortBy" 
+                    <select wire:model.live="sortBy"
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <option value="added_date">الأحدث</option>
                         <option value="name">الاسم</option>
@@ -44,12 +44,12 @@
         @if($products->count() > 0)
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach($products as $product)
-                    <a href="{{ route('products.show', $product->id) }}" 
+                    <a href="{{ route('products.show', $product->id) }}"
                        class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group">
                         <div class="relative overflow-hidden">
                             @if($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" 
-                                     alt="{{ $product->name }}" 
+                                <img src="{{ asset('storage/' . $product->image) }}"
+                                     alt="{{ $product->name }}"
                                      class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
                             @else
                                 <div class="w-full h-48 bg-gray-200 flex items-center justify-center">

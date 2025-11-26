@@ -17,7 +17,7 @@ class CategoryProducts extends Component
     public $search = '';
     public $brandFilter = '';
     public $sortBy = 'added_date';
-    public $sortDirection = 'desc';
+    public $sortDirection = 'asc';
     public $perPage = 12;
 
     public function mount($id)
@@ -38,7 +38,7 @@ class CategoryProducts extends Component
     public function sort($field)
     {
         if ($this->sortBy === $field) {
-            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'asc' : 'desc';
         } else {
             $this->sortBy = $field;
             $this->sortDirection = 'desc';

@@ -17,7 +17,9 @@
                 <div class="flex items-center">
                     <!-- Logo Red -->
                     <a href="{{ route('home') }}" class="text-2xl font-extrabold text-red-600 tracking-tight hover:text-red-700 transition-colors">
-                        Amara<span class="text-gray-800">Food</span>
+                           <div class="mb-5 transform hover:scale-[1.05] transition-transform duration-300">
+            <img src="{{ asset('logo.png') }}" alt="AmaraFood Logo" class="w-20 h-20 object-contain rounded-full shadow-lg border-4 border-red-500/20">
+        </div>
                     </a>
                 </div>
                 <nav class="hidden md:flex space-x-reverse space-x-8 items-center">

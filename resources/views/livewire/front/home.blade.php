@@ -1,10 +1,10 @@
 <div>
     <!-- Hero Section (Slider) -->
 <div class="relative w-full bg-gray-100 border-b border-gray-200" dir="ltr"> <!-- خلفية فاتحة -->
-    @if($products->count() > 0)
+    @if($categories->count() > 0)
         <div x-data="{
                 activeSlide: 0,
-                totalSlides: {{ $products->count() }},
+                totalSlides: {{ $categories->count() }},
                 next() {
                     this.activeSlide = (this.activeSlide === this.totalSlides - 1) ? 0 : this.activeSlide + 1;
                 },
@@ -19,12 +19,12 @@
             <div class="absolute top-0 left-0 w-full h-full flex transition-transform duration-700 ease-in-out"
                  :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
 
-                @foreach($products as $product)
+                @foreach($categories as $category)
                     <div class="w-full flex-shrink-0 relative h-full bg-red-100"> <!-- خلفية حمراء فاتحة في حالة عدم تحميل الصورة -->
                         <!-- صورة المنتج -->
-                        @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}"
-                                 alt="{{ $product->name }}"
+                        @if($category->image)
+                            <img src="{{ asset('storage/' . $category->image) }}"
+                                 alt="{{ $category->name }}"
                                  class="w-full h-full cover"> <!-- تم التعديل لـ object-contain لظهور الصورة بالكامل -->
                         @else
                             <!-- لون خلفية في حال عدم وجود صورة -->
@@ -39,13 +39,10 @@
                         <!-- النص فوق الصورة -->
                         <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4" dir="rtl">
                             <h1 class="text-4xl md:text-6xl font-bold text-white mb-2 drop-shadow-lg tracking-wider">
-                                {{ $product->name }}
+                                {{ $category->name }}
                             </h1>
-                            <p class="text-xl text-red-100 drop-shadow-md font-medium">
-                                {{ $product->description }}
-                            </p>
-                            <a href="{{ route('products.show', $product->id) }}" class="mt-4 px-6 py-2 bg-red-600 text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105">
-                                إكتشف المنتج
+                            <a href="{{ route('categories.show', $category->id) }}" class="mt-4 px-6 py-2 bg-red-600 text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105">
+                                إكتشف  هذا الصنف
                             </a>
                         </div>
                     </div>
