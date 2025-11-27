@@ -15,14 +15,12 @@ class Product extends Model
         'image',
         'weight',
         'quantity',
-        'expiry_date',
         'added_date',
         'category_id',
         'brand_id',
     ];
 
     protected $casts = [
-        'expiry_date' => 'date',
         'added_date' => 'date',
         'weight' => 'decimal:2',
     ];
@@ -31,10 +29,7 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function highResImages()
-{
-    return $this->hasMany(Image::class);
-}
+
 
     public function brand(): BelongsTo
     {

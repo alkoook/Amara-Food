@@ -65,12 +65,7 @@
                     <p class="text-gray-900">{{ $product->added_date->format('Y-m-d') }}</p>
                 </div>
 
-                @if($product->expiry_date)
-                    <div>
-                        <label class="block text-sm font-medium text-gray-500 mb-1">تاريخ انتهاء الصلاحية</label>
-                        <p class="text-gray-900">{{ $product->expiry_date->format('Y-m-d') }}</p>
-                    </div>
-                @endif
+        
             </div>
         </div>
 

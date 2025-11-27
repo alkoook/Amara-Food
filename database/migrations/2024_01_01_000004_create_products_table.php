@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('image');
             $table->decimal('weight', 10, 2)->nullable();
             $table->integer('quantity')->nullable();
-            $table->date('expiry_date')->nullable();
             $table->date('added_date');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('brand_id')->constrained()->onDelete('cascade');

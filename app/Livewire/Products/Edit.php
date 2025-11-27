@@ -51,7 +51,6 @@ class Edit extends Component
         $this->oldImage    = $this->product->image;
         $this->weight      = $this->product->weight;
         $this->quantity    = $this->product->quantity;
-        $this->expiry_date = $this->product->expiry_date?->format('Y-m-d');
         $this->added_date  = $this->product->added_date->format('Y-m-d');
         $this->category_id = $this->product->category_id;
         $this->brand_id    = $this->product->brand_id;
@@ -95,7 +94,6 @@ class Edit extends Component
             'image'       => $imagePath,
             'weight'      => $this->weight ?: null,
             'quantity'    => $this->quantity ?: null,
-            'expiry_date' => $this->expiry_date ?: null,
             'added_date'  => $this->added_date,
             'category_id' => $this->category_id,
             'brand_id'    => $this->brand_id,

@@ -27,10 +27,8 @@
             <div>
                 <h3 class="text-xl font-bold mb-4">معلومات الاتصال</h3>
                 <div class="space-y-2 text-sm text-gray-400">
-                    <p><span class="font-semibold text-white">العنوان:</span> دمشق – سوريا</p>
                     <p><span class="font-semibold text-white">البريد الإلكتروني:</span> {{ $email }}</p>
                     <p><span class="font-semibold text-white">رقم الهاتف:</span> {{ $phone }}</p>
-                    <p><span class="font-semibold text-white">ساعات العمل:</span> من السبت إلى الخميس – 9:00 صباحاً حتى 6:00 مساءً</p>
                 </div>
             </div>
 

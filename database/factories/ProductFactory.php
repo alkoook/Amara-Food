@@ -21,7 +21,6 @@ class ProductFactory extends Factory
             'image' => $this->faker->image('public/storage/products', 640, 480, null, false),
             'weight' => $this->faker->numberBetween(100, 2000), // الوزن بالغرام
             'quantity' => $this->faker->numberBetween(1, 100),
-            'expiry_date' => $this->faker->dateTimeBetween('now', '+1 year'),
             'added_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'category_id' => $this->faker->numberBetween(1, 10),
             'brand_id' => $this->faker->numberBetween(1, 10),

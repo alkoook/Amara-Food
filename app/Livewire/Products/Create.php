@@ -20,7 +20,6 @@ class Create extends Component
     public $image;
     public $weight = '';
     public $quantity = '';
-    public $expiry_date = '';
     public $added_date;
     public $category_id = '';
     public $brand_id = '';
@@ -34,7 +33,6 @@ class Create extends Component
         'image' => 'required|image|max:20000',
         'weight' => 'nullable|numeric|min:0',
         'quantity' => 'nullable|integer|min:0',
-        'expiry_date' => 'nullable|date',
         'added_date' => 'required|date',
         'category_id' => 'required|exists:categories,id',
         'brand_id' => 'required|exists:brands,id',
@@ -67,7 +65,6 @@ class Create extends Component
             'image'       => $imagePath,
             'weight'      => $this->weight ?: null,
             'quantity'    => $this->quantity ?: null,
-            'expiry_date' => $this->expiry_date ?: null,
             'added_date'  => $this->added_date,
             'category_id' => $this->category_id,
             'brand_id'    => $this->brand_id,

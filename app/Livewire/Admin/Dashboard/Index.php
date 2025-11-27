@@ -40,13 +40,13 @@ class Index extends Component
 
     public function render()
     {
-        $products = Product::query()
-            ->when($this->search, fn($q) => $q->where('name', 'like', '%' . $this->search . '%'))
-            ->when($this->categoryFilter, fn($q) => $q->where('category_id', $this->categoryFilter))
-            ->when($this->brandFilter, fn($q) => $q->where('brand_id', $this->brandFilter))
-            ->with(['category', 'brand'])
-            ->orderBy($this->sortBy, $this->sortDirection)
-            ->paginate($this->perPage);
+        // $products = Product::query()
+        //     ->when($this->search, fn($q) => $q->where('name', 'like', '%' . $this->search . '%'))
+        //     ->when($this->categoryFilter, fn($q) => $q->where('category_id', $this->categoryFilter))
+        //     ->when($this->brandFilter, fn($q) => $q->where('brand_id', $this->brandFilter))
+        //     ->with(['category', 'brand'])
+        //     ->orderBy($this->sortBy, $this->sortDirection)
+        //     ->paginate($this->perPage);
 
         // *** الحل الحقيقي ***
    $this->expiringProducts = Product::query()
@@ -64,6 +64,7 @@ class Index extends Component
 
         $categories = Category::all();
         $brands = Brand::all();
+        $products = Product::all();
 
         return view('livewire.admin.dashboard.index', [
             'products' => $products,

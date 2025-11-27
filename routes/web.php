@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Front Routes
 Route::get('/', \App\Livewire\Front\Home::class)->name('home');
-Route::get('/products', \App\Livewire\Front\Home::class)->name('products.index');
+Route::get('/products', \App\Livewire\Front\ProductsIndex::class)->name('products.index');
 Route::get('/products/{id}', \App\Livewire\Front\ProductShow::class)->name('products.show');
 Route::get('/categories', \App\Livewire\Front\CategoriesIndex::class)->name('categories.index');
 Route::get('/categories/{id}', \App\Livewire\Front\CategoryProducts::class)->name('categories.show');

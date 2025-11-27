@@ -20,15 +20,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'kok@kok.com',
-            'password'=>bcrypt('00000000')
-        ]);
-//       for ($i = 1; $i <= 50; $i++) {
-//     // Category::factory()->create();
-//     // Brand::factory()->create();
-//     Product::factory()->create();
-// }
+    // User::factory()->create([
+    //         'name' => 'أحمد كوكة ',
+    //         'email' => 'kok@kok.com',
+    //         'password'=>bcrypt('00000000')
+    //     ]);
+  
+    // Category::factory()->count(10)->create();
+    // Brand::factory()->count(10)->create();
+     Product::factory()->count(50)->create();
+    
     }
 }

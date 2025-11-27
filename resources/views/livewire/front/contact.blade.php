@@ -1,3 +1,14 @@
+
+    {{--  <style>
+        /* لضمان أن الإطار يملأ الحاوية بالكامل */
+        .map-container {
+            height: 320px; /* جعل الارتفاع ثابتاً وأصغر (أصغر من 450 بكسل) */
+        }
+        iframe {
+            /* إزالة أي حدود داخلية محتملة */
+            border: none !important;
+        }
+    </style>  --}}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">تواصل معنا</h1>
@@ -15,7 +26,8 @@
                     </div>
                 @endif
 
-                <form wire:submit="submit">
+                 <form wire:submit.prevent="submit">
+
                     <div class="space-y-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">الاسم *</label>
@@ -31,12 +43,12 @@
                             @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
-                        <div>
+                        {{--  <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">رقم الهاتف</label>
                             <input type="text" wire:model="phone" 
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('phone') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                        </div>
+                        </div>  --}}
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">الموضوع *</label>
@@ -88,18 +100,36 @@
                         </div>
                     </div>
 
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                        </div>
-                        <div class="mr-4">
-                            <h3 class="font-semibold text-gray-900 mb-1">العنوان</h3>
-                            <p class="text-gray-600">انجلترا– مكاتب AmaraFood الإدارية</p>
-                        </div>
-                    </div>
+<div class="flex items-start">
+    <div class="flex-shrink-0">
+        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+    </div>
+<div class="rounded-lg overflow-hidden shadow-lg w-full max-w-xl mx-auto">
+     <div class="w-full max-w-xl bg-white p-4 rounded-xl shadow-2xl border border-gray-200">
+        
+        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">موقعنا على الخريطة</h2>
+        
+        <!-- حاوية الإطار: لتحديد الارتفاع وتطبيق التنسيقات على الإطار نفسه -->
+        <div class="map-container relative w-full rounded-lg overflow-hidden shadow-xl ring-2 ring-indigo-500/50">
+            
+            <!-- كود الـ iframe المُنظف والمنسق -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2377.753030124612!2d-2.993266615841207!3d53.419242879994414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTPCsDI1JzA5LjMiTiAywrA1OSc0My42Ilc!5e0!3m2!1sar!2snl!4v1764244402241!5m2!1sar!2snl"     class="w-full h-full absolute top-0 left-0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        
+    </div>
+</div>
+
+</div>
+
+
 
                     <!-- Social Media -->
                     <div class="pt-6 border-t">
