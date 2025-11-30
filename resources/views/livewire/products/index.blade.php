@@ -1,8 +1,8 @@
 
 <div><div class="mb-6 flex justify-between items-center">
-        <h3 class="text-2xl font-bold text-gray-800">المنتجات</h3>
-        <a href="{{ route('admin.products.create') }}" class="bg-red-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
-            إضافة منتج جديد
+        <h3 class="text-2xl font-bold text-gray-800">{{ __('Products') }}</h3>
+        <a href="{{ route('admin.products.create') }}" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+           {{ __('Add a New Product') }}
         </a>
     </div>
 
@@ -10,13 +10,13 @@
         <!-- Filters and Search -->
         <div class="mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-                <input type="text" wire:model.live="search" placeholder="بحث باسم المنتج..."
+                <input type="text" wire:model.live="search" placeholder=" {{ __('Search with Product Name') }}..."
                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
             <div>
                 <select wire:model.live="categoryFilter"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <option value="">جميع الأصناف</option>
+                    <option value="">{{ __('All Categories') }} </option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
@@ -25,7 +25,7 @@
             <div>
                 <select wire:model.live="brandFilter"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <option value="">جميع الشركات</option>
+                    <option value=""> {{ __('All Brands') }}</option>
                     @foreach($brands as $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                     @endforeach
@@ -34,9 +34,8 @@
             <div>
                 <select wire:model.live="sortBy"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <option value="name">الاسم</option>
-                    <option value="added_date">تاريخ الإضافة</option>
-                    <option value="expiry_date">تاريخ الانتهاء</option>
+                    <option value="name">{{ __('Name') }}</option>
+                    <option value="added_date">{{ __('Added Date') }} </option>
                 </select>
             </div>
         </div>
@@ -45,20 +44,20 @@
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الصورة</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Image') }}</th>
                         <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                             <button wire:click="sort('name')" class="hover:text-gray-700">
-                                الاسم
+                                {{ __('Name') }}
                                 @if($sortBy === 'name')
                                     {{ $sortDirection === 'asc' ? '↑' : '↓' }}
                                 @endif
                             </button>
                         </th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الصنف</th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الشركة</th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الوزن/الكمية</th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاريخ الإضافة</th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الإجراءات</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Category') }}</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Brand') }}</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Weight') }}/{{__('Quantity')}}</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Added Date') }}</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('Options') }}</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -70,7 +69,7 @@
                                          class="h-16 w-16 object-cover rounded">
                                 @else
                                     <div class="h-16 w-16 bg-gray-200 rounded flex items-center justify-center">
-                                        <span class="text-gray-400 text-xs">لا توجد صورة</span>
+                                        <span class="text-gray-400 text-xs">{{ __('No image') }}  </span>
                                     </div>
                                 @endif
                             </td>
@@ -90,7 +89,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 @if($product->weight)
-                                    {{ $product->weight }} كجم
+                                    {{ $product->weight }} {{ __('KG') }}
                                 @elseif($product->quantity)
                                     {{ $product->quantity }} قطعة
                                 @else
@@ -102,12 +101,12 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <a href="{{ route('admin.products.show', $product->id) }}"
-                                   class="text-green-600 hover:text-green-900 ml-2">عرض</a>
+                                   class="text-green-600 hover:text-green-900 ml-2">{{ __('Show') }}</a>
                                 <a href="{{ route('admin.products.edit', $product->id) }}"
-                                   class="text-blue-600 hover:text-blue-900 ml-2">تعديل</a>
+                                   class="text-blue-600 hover:text-blue-900 ml-2">{{ __('Edit') }}</a>
                                 <button wire:click="delete({{ $product->id }})"
-                                        wire:confirm="هل أنت متأكد من حذف هذا المنتج؟"
-                                        class="text-red-600 hover:text-red-900">حذف</button>
+                                        wire:confirm="{{ __('Are You Sure to Delete This Product') }}"
+                                        class="text-red-600 hover:text-red-900">{{ __('Delete') }}</button>
                             </td>
                         </tr>
                     @empty

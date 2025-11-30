@@ -1,31 +1,31 @@
 <div>
 <div class="mb-6">
         <a href="{{ route('admin.categories.index') }}" class="text-blue-600 hover:text-blue-800">
-            ← العودة إلى قائمة الأصناف
+           {{ __('Go to Categories →') }}
         </a>
     </div>
 
     <div class="bg-white rounded-lg shadow-sm p-6 max-w-3xl">
-        <h3 class="text-xl font-bold text-gray-800 mb-6">تعديل الصنف</h3>
+        <h3 class="text-xl font-bold text-gray-800 mb-6">{{ __('Edit Category') }}</h3>
 
         <form wire:submit="update">
             <div class="space-y-6">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">اسم الصنف *</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2"> {{ __('Name') }}</label>
                     <input type="text" wire:model="name"
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">الوصف</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">{{ __('Description') }}</label>
                     <textarea wire:model="description" rows="4"
                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                     @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">صورة الصنف</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">{{ __('Image') }} </label>
                     @if($oldImage)
                         <div class="mb-2">
                             <img src="{{ asset('storage/' . $oldImage) }}" alt="Current" class="h-32 w-32 object-cover rounded">
@@ -42,7 +42,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">الشركات المرتبطة</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2"> {{ __('Brands Related With This Category') }}</label>
                     <div class="space-y-2 max-h-48 overflow-y-auto border border-gray-300 rounded-lg p-4">
                         @foreach($brands as $brand)
                             <label class="flex items-center">
@@ -55,12 +55,12 @@
                 </div>
 
                 <div class="flex gap-4">
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
-                        تحديث
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg">
+                        {{ __('Update') }}
                     </button>
                     <a href="{{ route('admin.categories.index') }}"
                        class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded-lg">
-                        إلغاء
+                        {{ __('Cancel') }}
                     </a>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 @component('mail::message')
-# رسالة جديدة من {{ $name }}
+# New Message from {{ $name }}
 
-**البريد:** {{ $email }}
+**Email:** {{ $email }}
 
-**الموضوع:** {{ $subject }}
+**Subject:** {{ $subject }}
 
-**الرسالة:**
+**Message:**
 {{ $message }}
 
 @endcomponent

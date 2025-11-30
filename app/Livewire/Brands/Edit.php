@@ -71,6 +71,6 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.brands.edit')->layout('components.layouts.admin', ['title' => 'الشركات']);
+        return view('livewire.brands.edit')->layout('components.layouts.admin', ['title' => 'Brands']);
     }
 }

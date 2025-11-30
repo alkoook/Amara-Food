@@ -16,6 +16,8 @@ class Index extends Component
     public $whatsapp = '';
     public $email = '';
     public $phone = '';
+    public $address = '';
+    public $location = '';
 
     public function mount()
     {
@@ -26,6 +28,8 @@ class Index extends Component
         $this->whatsapp = Setting::getValue('whatsapp', '');
         $this->email = Setting::getValue('email', '');
         $this->phone = Setting::getValue('phone', '');
+        $this->address = Setting::getValue('adress', '');
+        $this->location = Setting::getValue('location', '');
     }
 
     public function save()
@@ -37,6 +41,9 @@ class Index extends Component
         Setting::setValue('whatsapp', $this->whatsapp);
         Setting::setValue('email', $this->email);
         Setting::setValue('phone', $this->phone);
+        Setting::setValue('address', $this->address);
+        Setting::setValue('location', $this->location);
+
 
         session()->flash('message', 'تم حفظ الإعدادات بنجاح');
         return redirect()->route('admin.dashboard');
@@ -44,6 +51,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.settings.index')->layout('components.layouts.admin', ['title' => 'الإعدادات']);
+        return view('livewire.settings.index')->layout('components.layouts.admin', ['title' => 'Settings']);
     }
 }

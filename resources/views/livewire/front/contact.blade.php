@@ -1,14 +1,5 @@
 
-    {{--  <style>
-        /* لضمان أن الإطار يملأ الحاوية بالكامل */
-        .map-container {
-            height: 320px; /* جعل الارتفاع ثابتاً وأصغر (أصغر من 450 بكسل) */
-        }
-        iframe {
-            /* إزالة أي حدود داخلية محتملة */
-            border: none !important;
-        }
-    </style>  --}}
+
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">تواصل معنا</h1>
@@ -19,7 +10,7 @@
             <!-- Contact Form -->
             <div class="bg-white rounded-lg shadow-sm p-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">أرسل لنا رسالة</h2>
-                
+
                 @if (session()->has('message'))
                     <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                         <span class="block sm:inline">{{ session('message') }}</span>
@@ -31,35 +22,35 @@
                     <div class="space-y-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">الاسم *</label>
-                            <input type="text" wire:model="name" 
+                            <input type="text" wire:model="name"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">البريد الإلكتروني *</label>
-                            <input type="email" wire:model="email" 
+                            <input type="email" wire:model="email"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
                         {{--  <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">رقم الهاتف</label>
-                            <input type="text" wire:model="phone" 
+                            <input type="text" wire:model="phone"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('phone') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>  --}}
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">الموضوع *</label>
-                            <input type="text" wire:model="subject" 
+                            <input type="text" wire:model="subject"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('subject') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">الرسالة *</label>
-                            <textarea wire:model="message" rows="6" 
+                            <textarea wire:model="message" rows="6"
                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                             @error('message') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
@@ -74,7 +65,7 @@
             <!-- Contact Information -->
             <div class="bg-white rounded-lg shadow-sm p-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">معلومات الاتصال</h2>
-                
+
                 <div class="space-y-6">
                     <div class="flex items-start">
                         <div class="flex-shrink-0">
@@ -84,7 +75,7 @@
                         </div>
                         <div class="mr-4">
                             <h3 class="font-semibold text-gray-900 mb-1">رقم الهاتف</h3>
-                            <p class="text-gray-600">{{ $phone }}</p>
+                            <p class="text-gray-600">{{ $connectedPhone }}</p>
                         </div>
                     </div>
 
@@ -96,36 +87,56 @@
                         </div>
                         <div class="mr-4">
                             <h3 class="font-semibold text-gray-900 mb-1">البريد الإلكتروني</h3>
-                            <p class="text-gray-600">{{ $email }}</p>
+                            <p class="text-gray-600">{{ $connectedEmail }}</p>
                         </div>
                     </div>
 
-<div class="flex items-start">
-    <div class="flex-shrink-0">
-        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-        </svg>
-    </div>
-<div class="rounded-lg overflow-hidden shadow-lg w-full max-w-xl mx-auto">
-     <div class="w-full max-w-xl bg-white p-4 rounded-xl shadow-2xl border border-gray-200">
-        
-        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">موقعنا على الخريطة</h2>
-        
-        <!-- حاوية الإطار: لتحديد الارتفاع وتطبيق التنسيقات على الإطار نفسه -->
-        <div class="map-container relative w-full rounded-lg overflow-hidden shadow-xl ring-2 ring-indigo-500/50">
-            
-            <!-- كود الـ iframe المُنظف والمنسق -->
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2377.753030124612!2d-2.993266615841207!3d53.419242879994414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTPCsDI1JzA5LjMiTiAywrA1OSc0My42Ilc!5e0!3m2!1sar!2snl!4v1764244402241!5m2!1sar!2snl"     class="w-full h-full absolute top-0 left-0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+ <div class="w-full max-w-3xl bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 transform hover:shadow-3xl transition duration-300">
+
+        <h2 class="text-2xl font-extrabold text-gray-800 mb-6 text-center border-b border-indigo-100 pb-3">موقعنا ومعلومات الاتصال</h2>
+
+        <!-- الشبكة الرئيسية: معلومات الاتصال على اليمين والخريطة على اليسار (في وضع سطح المكتب) -->
+        <div class="md:grid md:grid-cols-2 gap-6 items-start">
+
+            <!-- 1. معلومات الاتصال (العنوان والهاتف) -->
+            <div class="mb-6 md:mb-0">
+                <h3 class="text-lg font-semibold text-gray-700 mb-3 border-r-4 border-indigo-500 pr-2">تفاصيل AMARA UK FOOD</h3>
+
+                <!-- بطاقة العنوان المنسقة -->
+                <div class="text-gray-600 space-y-2 font-mono text-sm leading-relaxed bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+                    <div class="flex items-center text-gray-800 font-bold">
+                        <svg class="w-5 h-5 ms-2 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 4h2"/></svg>
+                        <span>AMARA uk food Ltd</span>
+                    </div>
+                    <p class="ms-7">{{ $address }}</p>
+
+                    <!-- رقم الهاتف -->
+                    <p class="pt-3 text-lg text-indigo-700 font-extrabold flex items-center border-t border-indigo-200 mt-3">
+                        <svg class="w-6 h-6 ms-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        {{ $connectedPhone }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. الخريطة -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3 border-r-4 border-indigo-500 pr-2">موقعنا الدقيق</h3>
+                <div class="map-container relative w-full rounded-lg overflow-hidden shadow-xl ring-2 ring-indigo-500/50">
+
+                    <!-- كود الـ iframe الجديد (مع الحفاظ على الـ src الذي أرسلته) -->
+                    <iframe
+                        src="{{ $location }}"
+                        class="w-full h-full absolute top-0 left-0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
         </div>
-        
     </div>
-</div>
+
 
 </div>
 

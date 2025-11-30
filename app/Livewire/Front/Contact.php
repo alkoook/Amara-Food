@@ -3,6 +3,7 @@
 namespace App\Livewire\Front;
 
 use App\Mail\ContactMail;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
@@ -23,6 +24,16 @@ class Contact extends Component
         'subject' => 'required|string|max:255',
         'message' => 'required|string|max:2000',
     ];
+//  public function getEmbedLink($url)
+// {
+//     $parsed = parse_url($url);
+
+//     if ($parsed && isset($parsed['host']) && str_contains($parsed['host'], 'google.com')) {
+//         return str_replace('/place/', '/maps/embed?pb=', $url);
+//     }
+
+//     return $url; // لو رابط آخر، خلي كما هو
+// }
 
 public function submit()
 {
@@ -35,7 +46,7 @@ public function submit()
     ]);
 
     // إرسال الإيميل
-    Mail::to('support@amarafood.com')->send(new ContactMail(
+    Mail::to('aboskndr0956@gmail.com')->send(new ContactMail(
         $this->name,
         $this->email,
         $this->subject,
@@ -50,13 +61,16 @@ public function submit()
 
     public function render()
     {
-        $connectedEmail = \App\Models\Setting::getValue('email');
-        $connectedPhone = \App\Models\Setting::getValue('phone');
-        $facebook = \App\Models\Setting::getValue('facebook', '');
-        $twitter = \App\Models\Setting::getValue('twitter', '');
-        $instagram = \App\Models\Setting::getValue('instagram', '');
-        $whatsapp = \App\Models\Setting::getValue('whatsapp', '');
+        $connectedEmail = Setting::getValue('email');
+        $connectedPhone = Setting::getValue('phone');
+        $facebook = Setting::getValue('facebook', '');
+        $twitter = Setting::getValue('twitter', '');
+        $instagram = Setting::getValue('instagram', '');
+        $whatsapp = Setting::getValue('whatsapp', '');
+        $address = Setting::getValue('address', '');
+        $location = Setting::getValue('location', '');
 
-        return view('livewire.front.contact', compact('connectedEmail', 'connectedPhone', 'facebook', 'twitter', 'instagram', 'whatsapp'))->layout('components.front-layout');
+
+        return view('livewire.front.contact', compact('connectedEmail', 'connectedPhone', 'facebook', 'twitter', 'instagram', 'whatsapp','address','location'))->layout('components.front-layout');
     }
 }

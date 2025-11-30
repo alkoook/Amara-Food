@@ -105,6 +105,6 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.products.edit')->layout('components.layouts.admin', ['title' => 'المنتجات']);
+        return view('livewire.products.edit')->layout('components.layouts.admin', ['title' => 'Products']);
     }
 }

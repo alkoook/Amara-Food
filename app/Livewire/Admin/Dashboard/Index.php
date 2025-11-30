@@ -48,19 +48,6 @@ class Index extends Component
         //     ->orderBy($this->sortBy, $this->sortDirection)
         //     ->paginate($this->perPage);
 
-        // *** الحل الحقيقي ***
-   $this->expiringProducts = Product::query()
-    ->whereNotNull('expiry_date')
-    ->where(function ($q) {
-        $q->whereDate('expiry_date', '<', Carbon::today()) // منتهية صلاحيتها
-          ->orWhereBetween('expiry_date', [
-                Carbon::today(),
-                Carbon::today()->addDays(30)
-          ]); // قريبة من الانتهاء (خلال 30 يوم)
-    })
-    ->orderBy('expiry_date', 'asc')
-    ->limit(10)
-    ->get();
 
         $categories = Category::all();
         $brands = Brand::all();

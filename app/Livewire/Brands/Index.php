@@ -39,6 +39,6 @@ class Index extends Component
         ->latest()
         ->paginate($this->perPage);
 
-        return view('livewire.brands.index', compact('brands'))->layout('components.layouts.admin', ['title' => 'الشركات']);
+        return view('livewire.brands.index', compact('brands'))->layout('components.layouts.admin', ['title' => 'Brands']);
     }
 }

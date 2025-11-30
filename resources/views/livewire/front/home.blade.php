@@ -42,7 +42,7 @@
                                 {{ $category->name }}
                             </h1>
                             <a href="{{ route('categories.show', $category->id) }}" class="mt-4 px-6 py-2 bg-red-600 text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105">
-                                إكتشف  هذا الصنف
+                                {{ __('Discover this category') }}
                             </a>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
     @else
         <!-- في حال لم يكن هناك منتجات -->
         <div class="h-64 flex items-center justify-center bg-gray-100 border-t border-gray-200 text-gray-700">
-            <h1 class="text-3xl font-bold">لا توجد منتجات حاليًا في العروض الرئيسية</h1>
+            <h1 class="text-3xl font-bold">{{ __('No products currently in main offers') }}</h1>
         </div>
     @endif
 </div>
@@ -70,13 +70,13 @@
     <div class="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-                <input type="text" wire:model.live="search" placeholder="بحث عن منتج..."
+                <input type="text" wire:model.live="search" placeholder="{{ __('Search for a product...') }}"
                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
             </div>
             <div>
                 <select wire:model.live="categoryFilter"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                    <option value="">جميع الأصناف</option>
+                    <option value="">{{ __('All Categories') }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
@@ -85,7 +85,7 @@
             <div>
                 <select wire:model.live="brandFilter"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                    <option value="">جميع الشركات</option>
+                    <option value="">{{ __('All Brands') }}</option>
                     @foreach($brands as $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                     @endforeach
@@ -94,8 +94,8 @@
             <div>
                 <select wire:model.live="sortBy"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                    <option value="added_date">الأحدث</option>
-                    <option value="name">الاسم</option>
+                    <option value="added_date">{{ __('Latest') }}</option>
+                    <option value="name">{{ __('Name') }}</option>
                 </select>
             </div>
         </div>
@@ -115,7 +115,7 @@
                                      class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                             @else
                                 <div class="w-full h-48 bg-gray-100 flex items-center justify-center">
-                                    <span class="text-gray-400">لا توجد صورة</span>
+                                    <span class="text-gray-400">{{ __('No image') }}</span>
                                 </div>
                             @endif
                             <!-- شارة الصنف باللون الأحمر -->
@@ -131,11 +131,11 @@
                             </h3>
                             <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ Str::limit($product->description, 60) }}</p>
                             <div class="flex items-center justify-between text-sm pt-2 border-t border-gray-100">
-                                <span class="text-gray-500 font-medium text-xs">الشركة: {{ $product->brand->name }}</span>
+                                <span class="text-gray-500 font-medium text-xs">{{ __('Brand') }}: {{ $product->brand->name }}</span>
                                 @if($product->weight)
-                                    <span class="text-red-600 font-bold text-base">{{ $product->weight }} كجم</span>
+                                    <span class="text-red-600 font-bold text-base">{{ $product->weight }} {{ __('kg') }}</span>
                                 @elseif($product->quantity)
-                                    <span class="text-red-600 font-bold text-base">{{ $product->quantity }} قطعة</span>
+                                    <span class="text-red-600 font-bold text-base">{{ $product->quantity }} {{ __('piece') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -148,7 +148,7 @@
             </div>
         @else
             <div class="bg-white rounded-lg shadow-sm p-12 text-center border border-gray-100">
-                <p class="text-gray-500 text-lg">لا توجد منتجات متاحة حسب عوامل التصفية.</p>
+                <p class="text-gray-500 text-lg">{{ __('No products available matching filters.') }}</p>
             </div>
         @endif
     </div>

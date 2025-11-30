@@ -3,6 +3,14 @@
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 
+// Language Switcher
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ar'])) {
+        session(['locale' => $locale]);
+    }
+    return back();
+})->name('switch-language');
+
 // Front Routes
 Route::get('/', \App\Livewire\Front\Home::class)->name('home');
 Route::get('/products', \App\Livewire\Front\ProductsIndex::class)->name('products.index');

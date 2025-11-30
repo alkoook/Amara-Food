@@ -42,15 +42,15 @@ class Edit extends Component
         $this->validate();
 
         $imagePath = $this->oldImage;
-        
+
         if ($this->image) {
             // Delete old image
             if ($this->oldImage) {
                 \Storage::disk('public')->delete($this->oldImage);
             }
-            
+
             $imagePath = $this->image->store('categories', 'public');
-            
+
             // Compress image
             $img = Image::read(storage_path('app/public/' . $imagePath));
             $img->scale(width: 800);
@@ -71,7 +71,7 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.categories.edit')->layout('components.layouts.admin', ['title' => 'الأصناف']);
+        return view('livewire.categories.edit')->layout('components.layouts.admin', ['title' => 'Categories']);
     }
 }
 

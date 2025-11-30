@@ -27,7 +27,7 @@ public function build()
 {
     return $this->from('aboskndr0956@gmail.com', 'Amara Food') // إيميل المرسل
                 ->replyTo($this->email, $this->name)          // الإيميل تبع المرسل من الفورم
-                ->to('ahmadkoke21@gmail.com')                // الإيميل اللي بدك يروح عليه
+                ->to('aboskndr0956@gmail.com')                // الإيميل اللي بدك يروح عليه
                 ->subject($this->subject)
                 ->markdown('emails.contact');
 }

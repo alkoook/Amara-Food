@@ -60,6 +60,6 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.categories.create')->layout('components.layouts.admin', ['title' => 'الأصناف']);
+        return view('livewire.categories.create')->layout('components.layouts.admin', ['title' => 'Categories']);
     }
 }

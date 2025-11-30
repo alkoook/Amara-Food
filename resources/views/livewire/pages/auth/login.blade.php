@@ -89,7 +89,7 @@ new #[Layout('layouts.guest')] class extends Component
                         </p>
                     @enderror
                 </div>
-
+{{-- 
                 <!-- Remember Me & Forgot Password -->
                 <div class="flex items-center justify-between pt-1">
                     <label for="remember" class="inline-flex items-center cursor-pointer group select-none">
@@ -108,7 +108,7 @@ new #[Layout('layouts.guest')] class extends Component
                             نسيت كلمة المرور؟
                         </a>
                     @endif
-                </div>
+                </div> --}}
 
                 <!-- Submit Button باللون الأحمر -->
                 <button type="submit" class="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-lg shadow-xl shadow-red-500/30 text-base font-bold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-red-500 transition-all duration-300 hover:-translate-y-0.5 mt-8">
