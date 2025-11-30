@@ -2,14 +2,14 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">تواصل معنا</h1>
-            <p class="text-xl text-gray-600">يسعدنا استقبال أسئلتكم واقتراحاتكم عبر النموذج أو وسائل التواصل التالية</p>
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ __('Contact Us') }} </h1>
+            <p class="text-xl text-gray-600">{{ __('We welcome your questions and suggestions via the form or the following contact methods') }}</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Contact Form -->
             <div class="bg-white rounded-lg shadow-sm p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">أرسل لنا رسالة</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">{{__('Send a Message')}}</h2>
 
                 @if (session()->has('message'))
                     <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
@@ -21,14 +21,14 @@
 
                     <div class="space-y-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">الاسم *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2"> {{ __('Name') }}</label>
                             <input type="text" wire:model="name"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">البريد الإلكتروني *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2"> {{ __('Email') }}</label>
                             <input type="email" wire:model="email"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -42,21 +42,21 @@
                         </div>  --}}
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">الموضوع *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2"> {{ __('Subject') }}</label>
                             <input type="text" wire:model="subject"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('subject') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">الرسالة *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2"> {{ __('Message') }}</label>
                             <textarea wire:model="message" rows="6"
                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                             @error('message') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
                         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold">
-                            إرسال الرسالة
+                            {{ __('Send a Message') }} 
                         </button>
                     </div>
                 </form>
@@ -64,7 +64,7 @@
 
             <!-- Contact Information -->
             <div class="bg-white rounded-lg shadow-sm p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">معلومات الاتصال</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6"> {{ __('Information For Connection') }}</h2>
 
                 <div class="space-y-6">
                     <div class="flex items-start">
@@ -74,7 +74,7 @@
                             </svg>
                         </div>
                         <div class="mr-4">
-                            <h3 class="font-semibold text-gray-900 mb-1">رقم الهاتف</h3>
+                            <h3 class="font-semibold text-gray-900 mb-1">{{ __('Phone Number') }}</h3>
                             <p class="text-gray-600">{{ $connectedPhone }}</p>
                         </div>
                     </div>
@@ -86,21 +86,21 @@
                             </svg>
                         </div>
                         <div class="mr-4">
-                            <h3 class="font-semibold text-gray-900 mb-1">البريد الإلكتروني</h3>
+                            <h3 class="font-semibold text-gray-900 mb-1"> {{ __('Email') }}</h3>
                             <p class="text-gray-600">{{ $connectedEmail }}</p>
                         </div>
                     </div>
 
  <div class="w-full max-w-3xl bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 transform hover:shadow-3xl transition duration-300">
 
-        <h2 class="text-2xl font-extrabold text-gray-800 mb-6 text-center border-b border-indigo-100 pb-3">موقعنا ومعلومات الاتصال</h2>
+        <h2 class="text-2xl font-extrabold text-gray-800 mb-6 text-center border-b border-indigo-100 pb-3">{{ __('Information For Address') }}</h2>
 
         <!-- الشبكة الرئيسية: معلومات الاتصال على اليمين والخريطة على اليسار (في وضع سطح المكتب) -->
         <div class="md:grid md:grid-cols-2 gap-6 items-start">
 
             <!-- 1. معلومات الاتصال (العنوان والهاتف) -->
             <div class="mb-6 md:mb-0">
-                <h3 class="text-lg font-semibold text-gray-700 mb-3 border-r-4 border-indigo-500 pr-2">تفاصيل AMARA UK FOOD</h3>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3 border-indigo-500 pr-2">{{ __('Address') }}</h3>
 
                 <!-- بطاقة العنوان المنسقة -->
                 <div class="text-gray-600 space-y-2 font-mono text-sm leading-relaxed bg-indigo-50 p-4 rounded-lg border border-indigo-200">
@@ -120,7 +120,7 @@
 
             <!-- 2. الخريطة -->
             <div>
-                <h3 class="text-lg font-semibold text-gray-700 mb-3 border-r-4 border-indigo-500 pr-2">موقعنا الدقيق</h3>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3  border-indigo-500 pr-2">{{ __('Location') }} </h3>
                 <div class="map-container relative w-full rounded-lg overflow-hidden shadow-xl ring-2 ring-indigo-500/50">
 
                     <!-- كود الـ iframe الجديد (مع الحفاظ على الـ src الذي أرسلته) -->
@@ -131,6 +131,7 @@
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
+
                 </div>
             </div>
 
@@ -144,7 +145,7 @@
 
                     <!-- Social Media -->
                     <div class="pt-6 border-t">
-                        <h3 class="font-semibold text-gray-900 mb-4">وسائل التواصل الاجتماعي</h3>
+                        <h3 class="font-semibold text-gray-900 mb-4">{{ __('Social Media') }}</h3>
                         <div class="flex space-x-reverse space-x-4">
                             @if($facebook)
                                 <a href="{{ $facebook }}" target="_blank" class="text-gray-600 hover:text-blue-600 transition">

@@ -1,8 +1,8 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">جميع الشركات</h1>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ __('All Brands') }} </h1>
             <div class="mb-4">
-                <input type="text" wire:model.live="search" placeholder="بحث عن شركة..." 
+                <input type="text" wire:model.live="search" placeholder="{{ __('Search') }}..." 
                        class="w-full md:w-96 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
         </div>
@@ -33,7 +33,7 @@
                                 <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ Str::limit($brand->description, 60) }}</p>
                             @endif
                             <div class="flex items-center text-sm text-gray-500">
-                                <span>{{ $brand->products_count }} منتج</span>
+                                <span>{{ $brand->products_count }} {{ __('Product') }}</span>
                             </div>
                         </div>
                     </a>
@@ -45,7 +45,7 @@
             </div>
         @else
             <div class="bg-white rounded-lg shadow-sm p-12 text-center">
-                <p class="text-gray-500 text-lg">لا توجد شركات متاحة</p>
+                <p class="text-gray-500 text-lg">{{ __ ('No Brands Avilable') }}</p>
             </div>
         @endif
     </div>

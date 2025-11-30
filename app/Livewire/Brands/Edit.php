@@ -65,7 +65,7 @@ class Edit extends Component
 
         $this->brand->categories()->sync($this->selectedCategories ?? []);
 
-        session()->flash('message', 'تم تحديث الشركة بنجاح');
+        session()->flash('message', __('The Brand is Updated Successfully'));
         return redirect()->route('admin.brands.index');
     }
 

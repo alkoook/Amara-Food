@@ -46,7 +46,7 @@ public function submit()
     ]);
 
     // إرسال الإيميل
-    Mail::to('aboskndr0956@gmail.com')->send(new ContactMail(
+    Mail::to('ahmadkoke21@gmail.com')->send(new ContactMail(
         $this->name,
         $this->email,
         $this->subject,

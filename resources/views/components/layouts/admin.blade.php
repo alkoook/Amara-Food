@@ -181,7 +181,7 @@
                                 x-transition:enter-start="transform opacity-0 scale-95"
                                 x-transition:enter-end="transform opacity-100 scale-100"
                                 x-transition:leave="transition ease-in duration-75"
-                                class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl py-1 z-50 origin-top-left" x-cloak>
+                                class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl py-1 z-50 origin-top-left" x-cloak>
                                 <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
                                     <button wire:click="logout" class="block w-full text-right px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors">

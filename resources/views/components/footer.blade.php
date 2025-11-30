@@ -18,30 +18,32 @@
                     <p class="text-gray-400 text-sm leading-relaxed">{{ $companyOverview }}</p>
                 @else
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        شركة AmaraFood للمواد الغذائية - نقدم لكم أفضل المنتجات الغذائية بجودة عالية وخدمة ممتازة.
+                   <strong>AmaraFood</strong> –
+    {!! __('A leading food company committed to delivering the highest quality food products while fully adhering to health and safety standards. We strive to provide a unique experience for our customers through exceptional customer service, a wide range of products, and continuous innovation to meet the needs of every family and business. Our mission is to make <strong>AmaraFood</strong> the first choice for anyone seeking quality and trust in the world of food.') !!}
+
                     </p>
                 @endif
             </div>
 
             <!-- معلومات الاتصال -->
             <div>
-                <h3 class="text-xl font-bold mb-4">معلومات الاتصال</h3>
+                <h3 class="text-xl font-bold mb-4"> {{ __('Information For Connection') }}</h3>
                 <div class="space-y-2 text-sm text-gray-400">
-                    <p><span class="font-semibold text-white">البريد الإلكتروني:</span> {{ $email }}</p>
-                    <p><span class="font-semibold text-white">رقم الهاتف:</span> {{ $phone }}</p>
+                    <p><span class="font-semibold text-white">{{ __('Email') }} :</span> {{ $email }}</p>
+                    <p><span class="font-semibold text-white">{{ __('Phone Number') }} :</span> {{ $phone }}</p>
                 </div>
             </div>
 
             <!-- روابط سريعة -->
             <div>
-                <h3 class="text-xl font-bold mb-4">روابط سريعة</h3>
+                <h3 class="text-xl font-bold mb-4"> {{ __('Shortcut Links') }}</h3>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-white transition">الرئيسية</a></li>
-                    <li><a href="{{ route('products.index') }}" class="text-gray-400 hover:text-white transition">المنتجات</a></li>
-                    <li><a href="{{ route('categories.index') }}" class="text-gray-400 hover:text-white transition">الأصناف</a></li>
-                    <li><a href="{{ route('brands.index') }}" class="text-gray-400 hover:text-white transition">الشركات</a></li>
-                    <li><a href="{{ route('about') }}" class="text-gray-400 hover:text-white transition">من نحن</a></li>
-                    <li><a href="{{ route('contact') }}" class="text-gray-400 hover:text-white transition">تواصل معنا</a></li>
+                    <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-white transition">{{ __('Home') }}</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-gray-400 hover:text-white transition">{{ __('Products') }}</a></li>
+                    <li><a href="{{ route('categories.index') }}" class="text-gray-400 hover:text-white transition">{{ __('Categories') }}</a></li>
+                    <li><a href="{{ route('brands.index') }}" class="text-gray-400 hover:text-white transition">{{ __('Brands') }}</a></li>
+                    <li><a href="{{ route('about') }}" class="text-gray-400 hover:text-white transition">{{ __('About Us') }}</a></li>
+                    <li><a href="{{ route('contact') }}" class="text-gray-400 hover:text-white transition"> {{ __('Contact Us') }}</a></li>
                 </ul>
                 
                 <!-- وسائل التواصل الاجتماعي -->
@@ -72,7 +74,7 @@
 
         <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
             <p>AmaraFood © 2025</p>
-            <p class="mt-2">جميع الحقوق محفوظة لشركة AmaraFood للمواد الغذائية.</p>
+            <p class="mt-2">All rights reserved to AmaraFood Food Company</p>
         </div>
     </div>
 </footer>

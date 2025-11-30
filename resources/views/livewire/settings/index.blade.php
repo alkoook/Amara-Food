@@ -29,7 +29,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2"> {{ __('Address') }} </label>
                          <textarea wire:model="address" rows="6"
                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                              placeholder="{{ __('Write The Address') }}"></textarea>
+                              placeholder="{{ __('Write The Address') }}">{{ $address }}</textarea>
                     </div>
                          <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">{{ __('Location') }} </label>

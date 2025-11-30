@@ -1,6 +1,6 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav class="mb-6 text-sm">
-            <a href="{{ route('home') }}" class="text-blue-600 hover:text-blue-800">الرئيسية</a>
+            <a href="{{ route('home') }}" class="text-blue-600 hover:text-blue-800">{{ __('Home') }}</a>
             <span class="mx-2 text-gray-400">/</span>
             <a href="{{ route('categories.show', $product->category->id) }}" class="text-blue-600 hover:text-blue-800">{{ $product->category->name }}</a>
             <span class="mx-2 text-gray-400">/</span>
@@ -17,7 +17,7 @@
                              class="w-full h-96 rounded-lg shadow-md">
                     @else
                         <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-                            <span class="text-gray-400">لا توجد صورة</span>
+                            <span class="text-gray-400">{{ __('No image') }}</span>
                         </div>
                     @endif
                 </div>
@@ -38,20 +38,20 @@
                     <div class="space-y-4 mb-6">
                         @if($product->weight)
                             <div class="flex items-center">
-                                <span class="font-semibold text-gray-700 w-32">الوزن:</span>
-                                <span class="text-gray-900">{{ $product->weight }} كجم</span>
+                                <span class="font-semibold text-gray-700 w-32">{{ __('Weight') }}:</span>
+                                <span class="text-gray-900">{{ $product->weight }} {{ __('KG') }}</span>
                             </div>
                         @endif
 
                         @if($product->quantity)
                             <div class="flex items-center">
-                                <span class="font-semibold text-gray-700 w-32">الكمية:</span>
-                                <span class="text-gray-900">{{ $product->quantity }} قطعة</span>
+                                <span class="font-semibold text-gray-700 w-32">{{ __('Quantity') }}:</span>
+                                <span class="text-gray-900">{{ $product->quantity }} {{ __('piece') }}</span>
                             </div>
                         @endif
 
                         <div class="flex items-center">
-                            <span class="font-semibold text-gray-700 w-32">تاريخ الإضافة:</span>
+                            <span class="font-semibold text-gray-700 w-32"> {{ __('Added Date') }}:</span>
                             <span class="text-gray-900">{{ $product->added_date->format('Y-m-d') }}</span>
                         </div>
 
@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="border-t pt-6">
-                        <h3 class="font-bold text-lg text-gray-900 mb-3">الوصف</h3>
+                        <h3 class="font-bold text-lg text-gray-900 mb-3">{{ __('Description') }}</h3>
                         <p class="text-gray-700 leading-relaxed whitespace-pre-wrap">{{ $product->description }}</p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
 
         <!-- Related Products -->
         <div class="mt-12">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">منتجات مشابهة</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6"> {{ __('Similar Product') }}</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach(\App\Models\Product::where('category_id', $product->category_id)
                     ->where('id', '!=', $product->id)
@@ -83,7 +83,7 @@
                                      class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
                             @else
                                 <div class="w-full h-40 bg-gray-200 flex items-center justify-center">
-                                    <span class="text-gray-400 text-xs">لا توجد صورة</span>
+                                    <span class="text-gray-400 text-xs">{{ __('No image') }} </span>
                                 </div>
                             @endif
                         </div>

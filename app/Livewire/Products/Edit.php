@@ -99,7 +99,7 @@ class Edit extends Component
             'brand_id'    => $this->brand_id,
         ]);
 
-        session()->flash('message', 'تم تحديث المنتج بنجاح');
+        session()->flash('message', __('The Product is Updated Successfully'));
         return redirect()->route('admin.products.index');
     }
 

@@ -28,7 +28,7 @@ class Index extends Component
         $this->whatsapp = Setting::getValue('whatsapp', '');
         $this->email = Setting::getValue('email', '');
         $this->phone = Setting::getValue('phone', '');
-        $this->address = Setting::getValue('adress', '');
+        $this->address = Setting::getValue('address', '');
         $this->location = Setting::getValue('location', '');
     }
 
@@ -45,7 +45,7 @@ class Index extends Component
         Setting::setValue('location', $this->location);
 
 
-        session()->flash('message', 'تم حفظ الإعدادات بنجاح');
+        session()->flash('message',__('The Settings is Updated Successfully'));
         return redirect()->route('admin.dashboard');
     }
 

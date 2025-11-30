@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-3xl font-extrabold text-gray-900 mb-6">ملخص لوحة التحكم</h1>
+    <h1 class="text-3xl font-extrabold text-gray-900 mb-6">{{ __('Dashboard') }} </h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- إجمالي المنتجات -->

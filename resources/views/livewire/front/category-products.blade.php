@@ -1,8 +1,8 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav class="mb-6 text-sm">
-            <a href="{{ route('home') }}" class="text-blue-600 hover:text-blue-800">الرئيسية</a>
+            <a href="{{ route('home') }}" class="text-blue-600 hover:text-blue-800">{{ __('Home') }}</a>
             <span class="mx-2 text-gray-400">/</span>
-            <a href="{{ route('categories.index') }}" class="text-blue-600 hover:text-blue-800">الأصناف</a>
+            <a href="{{ route('categories.index') }}" class="text-blue-600 hover:text-blue-800">{{ __('Categories') }}</a>
             <span class="mx-2 text-gray-400">/</span>
             <span class="text-gray-600">{{ $category->name }}</span>
         </nav>
@@ -18,13 +18,13 @@
         <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                    <input type="text" wire:model.live="search" placeholder="بحث عن منتج..."
+                    <input type="text" wire:model.live="search" placeholder="{{ __('Search') }}..."
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
                 <div>
                     <select wire:model.live="brandFilter"
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="">جميع الشركات</option>
+                        <option value=""> {{ __('All Brands') }}</option>
                         @foreach($brands as $brand)
                             <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @endforeach
@@ -33,8 +33,8 @@
                 <div>
                     <select wire:model.live="sortBy"
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="added_date">الأحدث</option>
-                        <option value="name">الاسم</option>
+                        <option value="added_date">{{ __('Latest') }}</option>
+                        <option value="name">{{ __('Name') }}</option>
                     </select>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                                      class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
                             @else
                                 <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                                    <span class="text-gray-400">لا توجد صورة</span>
+                                    <span class="text-gray-400">{{ __('No image') }}</span>
                                 </div>
                             @endif
                         </div>
@@ -65,9 +65,9 @@
                             <div class="flex items-center justify-between text-sm">
                                 <span class="text-gray-500">{{ $product->brand->name }}</span>
                                 @if($product->weight)
-                                    <span class="text-gray-700 font-semibold">{{ $product->weight }} كجم</span>
+                                    <span class="text-gray-700 font-semibold">{{ $product->weight }} {{ __('KG') }}</span>
                                 @elseif($product->quantity)
-                                    <span class="text-gray-700 font-semibold">{{ $product->quantity }} قطعة</span>
+                                    <span class="text-gray-700 font-semibold">{{ $product->quantity }}{{ __('Piece') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -80,7 +80,7 @@
             </div>
         @else
             <div class="bg-white rounded-lg shadow-sm p-12 text-center">
-                <p class="text-gray-500 text-lg">لا توجد منتجات في هذا الصنف</p>
+                <p class="text-gray-500 text-lg">{{ __('No Products For This Category') }}</p>
             </div>
         @endif
     </div>

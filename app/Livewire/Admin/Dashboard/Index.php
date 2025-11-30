@@ -58,6 +58,6 @@ class Index extends Component
             'categories' => $categories,
             'brands' => $brands,
             'expiringProducts' => $this->expiringProducts,
-        ])->layout('components.layouts.admin', ['title' => 'الرئيسية']);
+        ])->layout('components.layouts.admin', ['title' => 'Home']);
     }
 }
