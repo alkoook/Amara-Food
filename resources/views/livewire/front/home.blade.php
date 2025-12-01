@@ -8,8 +8,11 @@
                 next() {
                     this.activeSlide = (this.activeSlide === this.totalSlides - 1) ? 0 : this.activeSlide + 1;
                 },
+                prev() { // دالة الرجوع خطوة للخلف
+                    this.activeSlide = (this.activeSlide === 0) ? this.totalSlides - 1 : this.activeSlide - 1;
+                },
                 startAuto() {
-                    setInterval(() => { this.next() }, 3000); // كل 3 ثواني بيقلب
+                    setInterval(() => { this.next() }, 5000); // كل 3 ثواني بيقلب
                 }
             }"
             x-init="startAuto()"
@@ -24,8 +27,8 @@
                         <!-- صورة المنتج -->
                         @if($category->image)
                             <img src="{{ asset('storage/' . $category->image) }}"
-                                 alt="{{ $category->name }}"
-                                 class="w-full h-full cover"> <!-- تم التعديل لـ object-contain لظهور الصورة بالكامل -->
+                                alt="{{ $category->name }}"
+                                class="w-full h-full object-cover"> <!-- تم تعديل "cover" إلى "object-cover" لضمان التوافق مع Tailwind -->
                         @else
                             <!-- لون خلفية في حال عدم وجود صورة -->
                             <div class="w-full h-full bg-red-100 flex items-center justify-center">
@@ -49,11 +52,26 @@
                 @endforeach
             </div>
 
+            <!-- زر الرجوع (Previous) - يظهر عند تمرير الفأرة -->
+            <button @click="prev()"
+                    class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/30 text-white p-3 rounded-full z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50 focus:outline-none">
+                <!-- أيقونة السهم الأيسر -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+
+            <!-- زر التقديم (Next) - يظهر عند تمرير الفأرة -->
+            <button @click="next()"
+                    class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/30 text-white p-3 rounded-full z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50 focus:outline-none">
+                <!-- أيقونة السهم الأيمن -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+
             <!-- نقاط التوضيح تحت (Dots) -->
             <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-2 space-x-reverse z-10">
                 <template x-for="i in totalSlides">
                     <button class="w-3 h-3 rounded-full transition-all duration-300 shadow-md"
-                            :class="activeSlide === i - 1 ? 'bg-red-600 scale-110' : 'bg-white/70'"></button>
+                            :class="activeSlide === i - 1 ? 'bg-red-600 scale-110' : 'bg-white/70'"
+                            @click="activeSlide = i - 1"></button>
                 </template>
             </div>
         </div>
@@ -64,6 +82,7 @@
         </div>
     @endif
 </div>
+
 
 <!-- Filters and Search -->
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

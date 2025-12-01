@@ -53,7 +53,7 @@ public function submit()
         $this->message
     ));
 
-    session()->flash('message', 'شكراً لك! تم إرسال رسالتك بنجاح.');
+    session()->flash('message', "Thank You! You'r Message. has been Send Successfully");
 
     $this->reset(['name', 'email', 'phone', 'subject', 'message']);
 }

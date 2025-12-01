@@ -54,7 +54,7 @@ class Create extends Component
             $category->brands()->attach($this->selectedBrands);
         }
 
-        session()->flash('message', 'تم إضافة الصنف بنجاح');
+        session()->flash('message', 'The Ctegory Has been Created Successfully');
         return redirect()->route('admin.categories.index');
     }
 

@@ -70,7 +70,7 @@ class Create extends Component
             'brand_id'    => $this->brand_id,
         ]);
 
-        session()->flash('message', 'تم إضافة المنتج بنجاح');
+        session()->flash('message', ' The Product Has been Created Successfully ');
         return redirect()->route('admin.products.index');
     }
 

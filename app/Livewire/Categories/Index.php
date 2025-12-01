@@ -3,6 +3,7 @@
 namespace App\Livewire\Categories;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -24,7 +25,7 @@ class Index extends Component
     {
         $category = Category::findOrFail($id);
         if ($category->image) {
-            \Storage::disk('public')->delete($category->image);
+            Storage::disk('public')->delete($category->image);
         }
         $category->delete();
         session()->flash('message', 'تم حذف الصنف بنجاح');

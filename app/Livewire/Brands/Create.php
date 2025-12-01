@@ -54,7 +54,7 @@ class Create extends Component
             $brand->categories()->attach($this->selectedCategories);
         }
 
-        session()->flash('message', 'تم إضافة الشركة بنجاح');
+        session()->flash('message', 'The Brand Has been Created Successfully');
         return redirect()->route('admin.brands.index');
     }
 
