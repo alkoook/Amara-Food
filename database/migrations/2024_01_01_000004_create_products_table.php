@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
-            $table->decimal('weight', 10, 2)->nullable();
+            $table->integer('weight')->nullable();
             $table->integer('quantity')->nullable();
             $table->date('added_date');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
@@ -27,4 +27,3 @@ return new class extends Migration
         Schema::dropIfExists('products');
     }
 };
-

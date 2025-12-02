@@ -22,7 +22,6 @@ class Product extends Model
 
     protected $casts = [
         'added_date' => 'date',
-        'weight' => 'decimal:2',
     ];
 
     public function category(): BelongsTo

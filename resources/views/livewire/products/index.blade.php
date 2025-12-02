@@ -89,9 +89,9 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 @if($product->weight)
-                                    {{ $product->weight }} {{ __('KG') }}
+                                    {{ $product->weight }} {{ __('gram') }}
                                 @elseif($product->quantity)
-                                    {{ $product->quantity }} قطعة
+                                    {{ $product->quantity }} {{ __('piece') }}
                                 @else
                                     -
                                 @endif

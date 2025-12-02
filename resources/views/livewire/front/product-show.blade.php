@@ -39,7 +39,7 @@
                         @if($product->weight)
                             <div class="flex items-center">
                                 <span class="font-semibold text-gray-700 w-32">{{ __('Weight') }}:</span>
-                                <span class="text-gray-900">{{ $product->weight }} {{ __('KG') }}</span>
+                                <span class="text-gray-900">{{ $product->weight }} {{ __('gram') }}</span>
                             </div>
                         @endif
 

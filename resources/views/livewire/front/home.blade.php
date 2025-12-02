@@ -152,9 +152,8 @@
                             <div class="flex items-center justify-between text-sm pt-2 border-t border-gray-100">
                                 <span class="text-gray-500 font-medium text-xs">{{ __('Brand') }}: {{ $product->brand->name }}</span>
                                 @if($product->weight)
-                                    <span class="text-red-600 font-bold text-base">{{ $product->weight }} {{ __('kg') }}</span>
+                                    <span class="text-red-600 font-bold text-base">{{ $product->weight }} * {{ $product->quantity }} </span>
                                 @elseif($product->quantity)
-                                    <span class="text-red-600 font-bold text-base">{{ $product->quantity }} {{ __('piece') }}</span>
                                 @endif
                             </div>
                         </div>

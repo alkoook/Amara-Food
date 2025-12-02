@@ -25,7 +25,7 @@ Route::get('/about', function () {
 Route::get('/contact', \App\Livewire\Front\Contact::class)->name('contact');
 
 // Admin Routes (لوحة تحكم مستقلة تماماً)
-Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+Route::prefix('adminUK')->middleware('auth')->name('admin.')->group(function () {
 
 Route::get('/', \App\Livewire\Admin\Dashboard\Index::class)->name('dashboard');
 

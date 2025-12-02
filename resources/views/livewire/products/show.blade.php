@@ -49,7 +49,7 @@
                 @if($product->weight)
                     <div>
                         <label class="block text-sm font-medium text-gray-500 mb-1">{{ __('Weight') }}</label>
-                        <p class="text-gray-900">{{ $product->weight }} {{ __('KG') }}</p>
+                        <p class="text-gray-900">{{ $product->weight }} {{ __('gram') }}</p>
                     </div>
                 @endif
 

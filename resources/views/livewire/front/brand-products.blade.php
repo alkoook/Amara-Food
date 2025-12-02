@@ -9,8 +9,8 @@
 
         <div class="mb-8 flex items-center gap-6">
             @if($brand->logo)
-                <img src="{{ asset('storage/' . $brand->logo) }}" 
-                     alt="{{ $brand->name }}" 
+                <img src="{{ asset('storage/' . $brand->logo) }}"
+                     alt="{{ $brand->name }}"
                      class="w-24 h-24 object-contain">
             @endif
             <div>
@@ -25,11 +25,11 @@
         <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                    <input type="text" wire:model.live="search" placeholder="{{ __('Search') }}..." 
+                    <input type="text" wire:model.live="search" placeholder="{{ __('Search') }}..."
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
                 <div>
-                    <select wire:model.live="categoryFilter" 
+                    <select wire:model.live="categoryFilter"
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <option value="">{{ __('All Categories') }} </option>
                         @foreach($categories as $category)
@@ -38,7 +38,7 @@
                     </select>
                 </div>
                 <div>
-                    <select wire:model.live="sortBy" 
+                    <select wire:model.live="sortBy"
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <option value="added_date">{{ __('Latest') }}</option>
                         <option value="name">{{ __('Name') }}</option>
@@ -51,12 +51,12 @@
         @if($products->count() > 0)
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach($products as $product)
-                    <a href="{{ route('products.show', $product->id) }}" 
+                    <a href="{{ route('products.show', $product->id) }}"
                        class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group">
                         <div class="relative overflow-hidden">
                             @if($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" 
-                                     alt="{{ $product->name }}" 
+                                <img src="{{ asset('storage/' . $product->image) }}"
+                                     alt="{{ $product->name }}"
                                      class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
                             @else
                                 <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
@@ -74,7 +74,7 @@
                                     {{ $product->category->name }}
                                 </span>
                                 @if($product->weight)
-                                    <span class="text-gray-700 font-semibold">{{ $product->weight }} {{ __('KG') }}</span>
+                                    <span class="text-gray-700 font-semibold">{{ $product->weight }} {{ __('gram') }}</span>
                                 @elseif($product->quantity)
                                     <span class="text-gray-700 font-semibold">{{ $product->quantity }} {{ __('piece') }}</span>
                                 @endif
