@@ -21,10 +21,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
     User::factory()->create([
-            'name' => 'أحمد كوكة ',
-            'email' => 'kok@kok.com',
+            'name' => 'Ahmad Koke',
+            'email' => 'kok@kok.kok',
             'password'=>bcrypt('00000000')
         ]);
+        Category::factory()->count(50)->create();
+        Brand::factory()->count(50)->create();
+        Product::factory()->count(10000)->create();
 
     }
 }

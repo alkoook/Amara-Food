@@ -31,6 +31,9 @@
                             @if($product->description)
                                 <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ Str::limit($product->description, 60) }}</p>
                             @endif
+                                @if($product->weight)
+                                <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ $product->weight . ' * ' .$product->quantity}}</p>
+                            @endif
                         </div>
                     </a>
                 @endforeach

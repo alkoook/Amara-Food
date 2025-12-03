@@ -55,8 +55,13 @@
                 <div class="flex items-center justify-center h-20 bg-white border-b border-gray-200 shadow-sm">
 
                     <div class="flex items-center gap-3">
+                         <a href="{{ route('admin.dashboard') }}"
+                                         class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group {{ request()->routeIs('admin.dashboard') }}">
+
                             <img src="{{ asset('logo.png') }}" alt="Amara Food Logo"
-                                class="h-20 w-20 object-contain rounded">
+                            
+                                class="h-18 w-20 object-contain rounded">
+                    </a>
                         </div>
                     </div>
                     <div>
@@ -109,6 +114,19 @@
                 <div class="border-t border-gray-200 my-4 mx-2"></div>
                 <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">{{ __('Settings') }}</p>
 
+                  <!-- Profile Link -->
+                <a href="{{ route('admin.profile') }}"
+                class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group {{ request()->routeIs('admin.profile.*') ? 'bg-red-600 text-white shadow-lg shadow-red-500/30' : 'text-gray-700 hover:bg-red-50 hover:text-red-700' }}">
+                    <svg class="w-5 h-5 ml-3 transition-colors {{ request()->routeIs('admin.profile.*') ? 'text-white' : 'text-gray-400 group-hover:text-red-600' }}"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <!-- الرأس -->
+                            <circle cx="12" cy="8" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <!-- الجسم -->
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 20c0-3.333 2.667-6 6-6s6 2.667 6 6"/>
+                    </svg>
+                                    {{ __('Profile') }}
+                                </a>
+
                 <!-- Settings Link -->
                 <a href="{{ route('admin.settings.index') }}"
                 class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group {{ request()->routeIs('admin.settings.*') ? 'bg-red-600 text-white shadow-lg shadow-red-500/30' : 'text-gray-700 hover:bg-red-50 hover:text-red-700' }}">
@@ -117,6 +135,8 @@
                     </svg>
                     {{ __('System Settings') }}
                 </a>
+
+                
             </nav>
 
             <!-- User Info Footer -->

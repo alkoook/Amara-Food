@@ -13,8 +13,7 @@ class Index extends Component
 {
     use WithPagination;
 
-    protected $layout = 'components.front-layout';
-
+protected $layout = 'components.layouts.admin';
     public $search = '';
     public $categoryFilter = '';
     public $brandFilter = '';

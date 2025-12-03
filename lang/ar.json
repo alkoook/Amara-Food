@@ -102,5 +102,24 @@
     "Our vision is to be the first choice for our customers in the food sector by offering high-quality products and excellent customer service.":"رؤيتنا هي أن نكون الخيار الأول لعملائنا في مجال المواد الغذائية من خلال تقديم منتجات عالية الجودة وخدمة عملاء ممتازة.",
     "We are committed to high-quality standards and ensure that all our products meet the highest health and food standards.":"نلتزم بمعايير الجودة العالية ونضمن أن جميع منتجاتنا تلبي أعلى المعايير الصحية والغذائية.",
     "A leading food company committed to delivering the highest quality food products while fully adhering to health and safety standards. We strive to provide a unique experience for our customers through exceptional customer service, a wide range of products, and continuous innovation to meet the needs of every family and business. Our mission is to make <strong>AmaraFood</strong> the first choice for anyone seeking quality and trust in the world of food.": "شركة رائدة في مجال المواد الغذائية ملتزمة بتقديم منتجات غذائية عالية الجودة مع الالتزام التام بمعايير الصحة والسلامة. نسعى لتوفير تجربة فريدة لعملائنا من خلال خدمة عملاء استثنائية، مجموعة واسعة من المنتجات، والابتكار المستمر لتلبية احتياجات كل أسرة وكل نشاط تجاري. مهمتنا أن نجعل <strong>آمارافوود</strong> الخيار الأول لأي شخص يبحث عن الجودة والثقة في عالم الغذاء.",
-    "Shortcut Links":"روابط سريعة"
+    "Shortcut Links":"روابط سريعة",
+    "Email":"البريد الاكتروني",
+
+
+ "Profile Information": "معلومات البروفايل",
+  "Update your account's profile information and email address.": "قم بتحديث معلومات حسابك وعنوان البريد الإلكتروني.",
+  "Update Password": "تحديث كلمة المرور",
+ "Update Password Done":"تم تحديث كلمة المرور",
+  "Current Password": "كلمة المرور الحالية",
+  "New Password": "كلمة المرور الجديدة",
+    "Ensure your account is using a long, random password to stay secure.": "تأكد من أن حسابك يستخدم كلمة مرور طويلة وعشوائية للحفاظ على أمانه.",
+ "Are you sure you want to delete your account?": "هل أنت متأكد أنك تريد حذف حسابك؟",
+  "Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.": "بمجرد حذف حسابك، سيتم حذف جميع بياناته وموارده نهائيًا. الرجاء إدخال كلمة المرور لتأكيد رغبتك في الحذف بشكل دائم.",
+  "Confirm Password": "تأكيد كلمة المرور",
+  "Delete Account": "حذف الحساب",
+  "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "بمجرد حذف حسابك، سيتم حذف جميع موارده وبياناته بشكل دائم. قبل حذف حسابك، يرجى تنزيل أي بيانات أو معلومات ترغب بالاحتفاظ بها.",
+  "Add New User": "إضافة مستخدم جديد",
+  "Enter the details for the new account including name, email, and password.": "أدخل تفاصيل الحساب الجديد بما في ذلك الاسم والبريد الإلكتروني وكلمة المرور.",
+  "Password": "كلمة المرور",
+  "Create Account": "إنشاء حساب"
 }

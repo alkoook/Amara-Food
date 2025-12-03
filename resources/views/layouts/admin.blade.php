@@ -28,6 +28,9 @@
                 <a href="{{ route('admin.products.index') }}" class="block px-6 py-3 hover:bg-gray-800 {{ request()->routeIs('admin.products.*') ? 'bg-gray-800 border-r-4 border-blue-500' : '' }}">
                     {{ __('Products') }}
                 </a>
+                 <a href="{{ route('admin.profile') }}" class="block px-6 py-3 hover:bg-gray-800 {{ request()->routeIs('admin.profile.*') ? 'bg-gray-800 border-r-4 border-blue-500' : '' }}">
+                    {{ __('Profile') }}
+                </a>
                 <a href="{{ route('admin.settings.index') }}" class="block px-6 py-3 hover:bg-gray-800 {{ request()->routeIs('admin.settings.*') ? 'bg-gray-800 border-r-4 border-blue-500' : '' }}">
                     {{ __('Settings') }}
                 </a>

@@ -11,6 +11,8 @@ new class extends Component
     public string $current_password = '';
     public string $password = '';
     public string $password_confirmation = '';
+    
+    protected $layout = 'components.front-layout';
 
     /**
      * Update the password for the currently authenticated user.
@@ -38,41 +40,50 @@ new class extends Component
     }
 }; ?>
 
-<section>
+<!-- البطاقة الخارجية البيضاء الجديدة بالتنسيق المطلوب -->
+<section class="p-6 bg-white shadow-xl rounded-xl border border-red-100/50" dir="ltr">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-2xl font-bold text-red-600">
             {{ __('Update Password') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-gray-700">
             {{ __('Ensure your account is using a long, random password to stay secure.') }}
         </p>
     </header>
 
     <form wire:submit="updatePassword" class="mt-6 space-y-6">
         <div>
-            <x-input-label for="update_password_current_password" :value="__('Current Password')" />
-            <x-text-input wire:model="current_password" id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
-            <x-input-error :messages="$errors->get('current_password')" class="mt-2" />
+            <x-input-label for="update_password_current_password" :value="__('Current Password')" class="text-red-700 font-semibold" />
+            <x-text-input wire:model="current_password" id="update_password_current_password" name="current_password" type="password" 
+                          class="mt-1 block w-full border-gray-300 focus:border-red-500 focus:ring-red-500 rounded-md shadow-sm" 
+                          autocomplete="current-password" />
+            <x-input-error :messages="$errors->get('Current Password')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="update_password_password" :value="__('New Password')" />
-            <x-text-input wire:model="password" id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <x-input-label for="update_password_password" :value="__('New Password')" class="text-red-700 font-semibold" />
+            <x-text-input wire:model="password" id="update_password_password" name="password" type="password" 
+                          class="mt-1 block w-full border-gray-300 focus:border-red-500 focus:ring-red-500 rounded-md shadow-sm" 
+                          autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input wire:model="password_confirmation" id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" class="text-red-700 font-semibold" />
+            <x-text-input wire:model="password_confirmation" id="update_password_password_confirmation" name="password_confirmation" type="password" 
+                          class="mt-1 block w-full border-gray-300 focus:border-red-500 focus:ring-red-500 rounded-md shadow-sm" 
+                          autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <!-- استخدام كلاسات Tailwind لضمان اللون الأحمر الرئيسي للزر -->
+            <x-primary-button class="bg-red-600 hover:bg-red-700 focus:ring-red-500">{{ __('Update Password') }}</x-primary-button>
 
-            <x-action-message class="me-3" on="password-updated">
-                {{ __('Saved.') }}
+            <!-- رسالة الإجراء باللون الأحمر -->
+            <x-action-message class="me-3 text-red-600 font-medium" on="password-updated">
+                {{ __('Update Password Done') }}
             </x-action-message>
         </div>
     </form>

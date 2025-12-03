@@ -28,6 +28,7 @@ Route::get('/contact', \App\Livewire\Front\Contact::class)->name('contact');
 Route::prefix('adminUK')->middleware('auth')->name('admin.')->group(function () {
 
 Route::get('/', \App\Livewire\Admin\Dashboard\Index::class)->name('dashboard');
+Route::get('/profile', \App\Livewire\Admin\Dashboard\Profile::class)->name('profile');
 
 
     Route::post('/logout', Logout::class)->name('logout');
