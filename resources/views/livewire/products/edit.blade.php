@@ -7,7 +7,7 @@
     <div class="bg-white rounded-lg shadow-sm p-6 max-w-4xl">
         <h3 class="text-xl font-bold text-gray-800 mb-6">{{ __('Edit Product') }}</h3>
 
-        <form wire:submit="update">
+        <form wire:submit="update" enctype="multipart/form-data">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2"> {{ __('Name') }}</label>

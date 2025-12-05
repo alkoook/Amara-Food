@@ -8,7 +8,7 @@
     <div class="bg-white rounded-lg shadow-sm p-6 max-w-3xl">
         <h3 class="text-xl font-bold text-gray-800 mb-6"> {{ __('New Brand') }} </h3>
 
-        <form wire:submit="save">
+        <form wire:submit="save" enctype="multipart/form-data">
             <div class="space-y-6">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">{{ __('Name') }}</label>

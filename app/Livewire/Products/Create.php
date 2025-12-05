@@ -49,16 +49,23 @@ class Create extends Component
     {
         $this->validate();
 
-        // Save original image
-        $imagePath = $this->image->store('products', 'public');
+        $imagePath = null;
 
-        // Compress using Intervention Image v3
-        $img = Image::read(storage_path('app/public/' . $imagePath));
+        if ($this->image) {
+            // اسم الملف لتجنب التكرار
+            $filename = time() . '_' . $this->image->getClientOriginalName();
+            $imagePath = 'products/' . $filename;
 
-        $img->scale(width: 800);
+            // المسار النهائي داخل public_html/storage
+            $destination = base_path('public_html/storage/' . $imagePath);
 
-        $img->save(storage_path('app/public/' . $imagePath), 80);
+            // ضغط الصورة
+            $img = Image::read($this->image->getRealPath());
+            $img->scale(width: 800);
+            $img->save($destination, 80);
+        }
 
+        // حفظ المنتج في قاعدة البيانات
         Product::create([
             'name'        => $this->name,
             'description' => $this->description,
@@ -70,12 +77,13 @@ class Create extends Component
             'brand_id'    => $this->brand_id,
         ]);
 
-        session()->flash('message', ' The Product Has been Created Successfully ');
+        session()->flash('message', 'The Product Has been Created Successfully');
         return redirect()->route('admin.products.index');
     }
 
     public function render()
     {
-        return view('livewire.products.create')->layout('components.layouts.admin', ['title' => 'Products']);
+        return view('livewire.products.create')
+            ->layout('components.layouts.admin', ['title' => 'Products']);
     }
 }

@@ -35,21 +35,29 @@ class Create extends Component
         $this->validate();
 
         $logoPath = null;
-        if ($this->logo) {
-            $logoPath = $this->logo->store('brands', 'public');
 
-            // Compress image
-            $img = Image::read(storage_path('app/public/' . $logoPath));
+        if ($this->logo) {
+            // اسم الملف لتجنب التكرار
+            $filename = time() . '_' . $this->logo->getClientOriginalName();
+            $logoPath = 'brands/' . $filename;
+
+            // المسار النهائي داخل public_html/storage
+            $destination = base_path('public_html/storage/' . $logoPath);
+
+            // ضغط الصورة
+            $img = Image::read($this->logo->getRealPath());
             $img->scale(width: 800);
-            $img->save(storage_path('app/public/' . $logoPath), 80);
+            $img->save($destination, 80);
         }
 
+        // إنشاء البراند في قاعدة البيانات
         $brand = Brand::create([
             'name' => $this->name,
             'description' => $this->description,
             'logo' => $logoPath,
         ]);
 
+        // ربط البراند بالكاتيجوريز المختارة
         if (!empty($this->selectedCategories)) {
             $brand->categories()->attach($this->selectedCategories);
         }
@@ -60,6 +68,7 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.brands.create')->layout('components.layouts.admin', ['title' => 'Brands']);
+        return view('livewire.brands.create')
+            ->layout('components.layouts.admin', ['title' => 'Brands']);
     }
 }

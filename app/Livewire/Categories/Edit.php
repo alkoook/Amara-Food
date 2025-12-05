@@ -44,25 +44,33 @@ class Edit extends Component
         $imagePath = $this->oldImage;
 
         if ($this->image) {
-            // Delete old image
+            // حذف الصورة القديمة إذا موجودة
             if ($this->oldImage) {
-                \Storage::disk('public')->delete($this->oldImage);
+                $oldPath = base_path('public_html/storage/' . $this->oldImage);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
             }
 
-            $imagePath = $this->image->store('categories', 'public');
+            // حفظ الصورة الجديدة في public_html/storage/categories
+            $filename = time() . '_' . $this->image->getClientOriginalName();
+            $imagePath = 'categories/' . $filename;
+            $destination = base_path('public_html/storage/' . $imagePath);
 
-            // Compress image
-            $img = Image::read(storage_path('app/public/' . $imagePath));
+            // ضغط الصورة
+            $img = Image::read($this->image->getRealPath());
             $img->scale(width: 800);
-            $img->save(storage_path('app/public/' . $imagePath), 80);
+            $img->save($destination, 80);
         }
 
+        // تحديث بيانات الكاتيجوري في الداتابيز
         $this->category->update([
             'name' => $this->name,
             'description' => $this->description,
             'image' => $imagePath,
         ]);
 
+        // تحديث البراندات المرتبطة
         $this->category->brands()->sync($this->selectedBrands ?? []);
 
         session()->flash('message', __('The Category is Updated Successfully'));
@@ -71,7 +79,7 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.categories.edit')->layout('components.layouts.admin', ['title' => 'Categories']);
+        return view('livewire.categories.edit')
+            ->layout('components.layouts.admin', ['title' => 'Categories']);
     }
 }
-

@@ -58,7 +58,9 @@ class CategoryProducts extends Component
             ->orderBy($this->sortBy, $this->sortDirection)
             ->paginate($this->perPage);
 
-        $brands = $this->category->brands;
+        $brands = \App\Models\Brand::whereHas('products', function ($query) {
+            $query->where('category_id', $this->category->id);
+        })->get();
 
         return view('livewire.front.category-products', compact('products', 'brands'))->layout('components.front-layout');
     }

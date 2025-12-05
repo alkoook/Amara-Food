@@ -65,6 +65,11 @@ class Home extends Component
         $categories = Category::all();
         $brands = Brand::all();
 
-        return view('livewire.front.home', compact('products', 'categories', 'brands'))->layout('components.front-layout');
+        return view('livewire.front.home', [
+            'products' => $products,
+            'categories' => $categories,
+            'brands' => $brands,
+            'partners' => Brand::all()
+        ])->layout('components.front-layout');
     }
 }

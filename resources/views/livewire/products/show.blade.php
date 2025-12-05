@@ -20,7 +20,7 @@
                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                          class="w-40 h-40 cover rounded-lg">
                 @else
-                    <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
                         <span class="text-gray-400">{{ __("No image") }}  </span>
                     </div>
                 @endif

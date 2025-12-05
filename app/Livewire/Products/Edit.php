@@ -65,29 +65,27 @@ class Edit extends Component
 
         $imagePath = $this->oldImage;
 
-        // إذا رفع صورة جديدة
         if ($this->image) {
-
-            // حذف الصورة القديمة
+            // حذف الصورة القديمة إذا موجودة
             if ($this->oldImage) {
-                \Storage::disk('public')->delete($this->oldImage);
+                $oldPath = base_path('public_html/storage/' . $this->oldImage);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
             }
 
-            // تخزين الصورة الجديدة
-            $imagePath = $this->image->store('products', 'public');
+            // اسم جديد للملف لتجنب التكرار
+            $filename = time() . '_' . $this->image->getClientOriginalName();
+            $imagePath = 'products/' . $filename;
+            $destination = base_path('public_html/storage/' . $imagePath);
 
-            // ضغط الصورة (Intervention v3)
-            $img = Image::read(storage_path('app/public/' . $imagePath));
-
-            $img->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-
-            $img->save(storage_path('app/public/' . $imagePath), 80);
+            // ضغط الصورة
+            $img = Image::read($this->image->getRealPath());
+            $img->scale(width: 800);
+            $img->save($destination, 80);
         }
 
-        // تحديث البيانات
+        // تحديث البيانات في الداتابيز
         $this->product->update([
             'name'        => $this->name,
             'description' => $this->description,
@@ -105,6 +103,7 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.products.edit')->layout('components.layouts.admin', ['title' => 'Products']);
+        return view('livewire.products.edit')
+            ->layout('components.layouts.admin', ['title' => 'Products']);
     }
 }

@@ -1,96 +1,145 @@
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <nav class="mb-6 text-sm">
-            <a href="{{ route('home') }}" class="text-blue-600 hover:text-blue-800">{{ __('Home') }}</a>
-            <span class="mx-2 text-gray-400">/</span>
-            <a href="{{ route('brands.index') }}" class="text-blue-600 hover:text-blue-800">{{ __('Brands') }}</a>
-            <span class="mx-2 text-gray-400">/</span>
-            <span class="text-gray-600">{{ $brand->name }}</span>
-        </nav>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 text-sm font-medium">
+        <a href="{{ route('home') }}" class="text-gray-500 hover:text-red-600 transition-colors">{{ __('Home') }}</a>
+        <span class="mx-2 text-gray-300">/</span>
+        <a href="{{ route('brands.index') }}" class="text-gray-500 hover:text-red-600 transition-colors">{{ __('Brands') }}</a>
+        <span class="mx-2 text-gray-300">/</span>
+        <span class="text-red-600 font-bold">{{ $brand->name }}</span>
+    </nav>
 
-        <div class="mb-8 flex items-center gap-6">
+    <!-- Brand Header -->
+    <div class="bg-white rounded-3xl shadow-xl p-8 mb-12 border border-gray-100 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-red-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
             @if($brand->logo)
-                <img src="{{ asset('storage/' . $brand->logo) }}"
-                     alt="{{ $brand->name }}"
-                     class="w-24 h-24 object-contain">
+                <div class="w-32 h-32 md:w-40 md:h-40 flex-shrink-0 bg-white rounded-full p-4 shadow-lg border-4 border-red-50">
+                    <img src="{{ asset('storage/' . $brand->logo) }}"
+                         alt="{{ $brand->name }}"
+                         class="w-full h-full object-contain">
+                </div>
             @endif
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ $brand->name }}</h1>
+            <div class="flex-1">
+                <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">{{ $brand->name }}</h1>
                 @if($brand->description)
-                    <p class="text-gray-600">{{ $brand->description }}</p>
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">{{ $brand->description }}</p>
                 @endif
             </div>
         </div>
+    </div>
 
-        <!-- Filters -->
-        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                    <input type="text" wire:model.live="search" placeholder="{{ __('Search') }}..."
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+    <!-- Filters -->
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-6 mb-10 border-2 border-red-50">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="relative">
+                <input type="text" wire:model.live="search" placeholder="{{ __('Search products...') }}"
+                       class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all outline-none">
+                <svg class="w-5 h-5 text-gray-400 absolute right-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+            <div class="relative">
+                <select wire:model.live="categoryFilter"
+                        class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all outline-none appearance-none bg-white">
+                    <option value="">{{ __('All Categories') }}</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
-                <div>
-                    <select wire:model.live="categoryFilter"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="">{{ __('All Categories') }} </option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div>
-                    <select wire:model.live="sortBy"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="added_date">{{ __('Latest') }}</option>
-                        <option value="name">{{ __('Name') }}</option>
-                    </select>
+            </div>
+            <div class="relative">
+                <select wire:model.live="sortBy"
+                        class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:ring-4 focus:ring-red-500/10 transition-all outline-none appearance-none bg-white">
+                    <option value="added_date">{{ __('Latest Arrivals') }}</option>
+                    <option value="name">{{ __('Name (A-Z)') }}</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Products Grid -->
-        @if($products->count() > 0)
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                @foreach($products as $product)
-                    <a href="{{ route('products.show', $product->id) }}"
-                       class="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group">
-                        <div class="relative overflow-hidden">
+    <!-- Products Grid -->
+    @if($products->count() > 0)
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            @foreach($products as $product)
+                <div class="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                    
+                    <!-- Image Container -->
+                    <div class="relative h-64 overflow-hidden bg-gray-100">
+                        <a href="{{ route('products.show', $product->id) }}">
                             @if($product->image)
                                 <img src="{{ asset('storage/' . $product->image) }}"
                                      alt="{{ $product->name }}"
-                                     class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                                     class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out">
                             @else
-                                <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                                    <span class="text-gray-400">{{ __('No image') }}</span>
+                                <div class="w-full h-full flex items-center justify-center bg-gray-50">
+                                    <svg class="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                </div>
+                            @endif
+                        </a>
+                        
+                        <!-- Category Badge -->
+                        <div class="absolute top-4 left-4 z-10">
+                            <span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-red-600 text-xs font-extrabold uppercase tracking-wider rounded-lg shadow-sm">
+                                {{ $product->category->name }}
+                            </span>
+                        </div>
+
+                        <!-- Quick Action Overlay -->
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="{{ route('products.show', $product->id) }}" class="px-6 py-2 bg-white text-red-600 font-bold rounded-full transform scale-75 group-hover:scale-100 transition-transform duration-300 hover:bg-red-50">
+                                {{ __('View Details') }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors line-clamp-1">
+                                <a href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a>
+                            </h3>
+                        </div>
+                        
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2 h-10">{{ Str::limit($product->description, 80) }}</p>
+                        
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                </div>
+                                <span class="text-sm font-semibold text-gray-600">{{ $product->brand->name }}</span>
+                            </div>
+                            
+                            @if($product->weight || $product->quantity)
+                                <div class="text-right">
+                                    <span class="block text-xs text-gray-400">{{ __('Size') }}</span>
+                                    <span class="text-red-600 font-bold">
+                                        {{ $product->weight ?? '' }} {{ $product->quantity ? ($product->weight ? 'x ' : '') . $product->quantity : '' }}
+                                    </span>
                                 </div>
                             @endif
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition">
-                                {{ $product->name }}
-                            </h3>
-                            <p class="text-sm text-gray-600 mb-3 line-clamp-2">{{ Str::limit($product->description, 60) }}</p>
-                            <div class="flex items-center justify-between text-sm">
-                                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                                    {{ $product->category->name }}
-                                </span>
-                                @if($product->weight)
-                                    <span class="text-gray-700 font-semibold">{{ $product->weight }} {{ __('gram') }}</span>
-                                @elseif($product->quantity)
-                                    <span class="text-gray-700 font-semibold">{{ $product->quantity }} {{ __('piece') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
-            <div class="mt-8">
-                {{ $products->links() }}
+        <div class="mt-12 flex justify-center">
+            {{ $products->links() }}
+        </div>
+    @else
+        <div class="bg-white rounded-3xl shadow-xl p-16 text-center border-4 border-red-50">
+            <div class="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
             </div>
-        @else
-            <div class="bg-white rounded-lg shadow-sm p-12 text-center">
-                <p class="text-gray-500 text-lg">{{ __('No Products For This Brand') }}</p>
-            </div>
-        @endif
-    </div>
+            <p class="text-gray-900 text-xl font-bold mb-2">{{ __('No products found') }}</p>
+            <p class="text-gray-500">{{ __('Try adjusting your filters or check back later.') }}</p>
+        </div>
+    @endif
+</div>
 
